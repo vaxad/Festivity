@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
+import Post from '../../components/common/cards/Post'
 
 const Posts = () => {
   return (
@@ -10,6 +11,12 @@ const Posts = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text>
+      <View>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+      </View>
       </View>
     </SafeAreaView>
   )
