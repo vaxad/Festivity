@@ -3,7 +3,6 @@ import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
 const Post= () => {
-    return (
         return (
             <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
