@@ -21,6 +21,7 @@ const Input = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
+    <Text Style = {styles.Text}>Title</Text>
     <TextInput
       style={{height: 40}}
       placeholder="Give your event wonderful title"
