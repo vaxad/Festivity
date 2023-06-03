@@ -12,18 +12,18 @@ const Create = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
     </View>
-    <Input></Input>
+    <Input1></Input1>
           </SafeAreaView>
   
   )
 }
 
-const Input = ()=>{
+const Input1 = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
     <Input
-            keyboardType="Text"
+            keyboardType="text"
             onChangeText={setPhone}
             value={phone}
             onFocus={() => {}}
