@@ -13,6 +13,6 @@ const Profile = () => {
       </View>
     </SafeAreaView>
   )
-}
+} 
 
 export default Profile
