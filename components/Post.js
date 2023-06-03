@@ -32,13 +32,14 @@ const Post= ({title,content,onPress}) => {
       height: 200,
       padding: 10,
       justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'lightgray',
+      
+      backgroundColor: 'white',
+      padding: 20,
+
     },
     buttonImage: {
       width: '100%',
       height: '100%',
-      borderRadius: 25,
     },
   });
   
