@@ -10,6 +10,7 @@ const Create = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
       <Text style={styles.userName}>here</Text>
+    
       </View>
       
     </SafeAreaView>
