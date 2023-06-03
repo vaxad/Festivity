@@ -5,11 +5,15 @@ import { COLORS } from '../../constants'
 
 const Create = () => {
   return (
-    <SafeAreaView>
-      <Text>Host a Party</Text>
-      {/* Add other components and logic */}
+    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
+    <View style={{marginTop:90}}/>
+      <View style={styles.container}>
+      <Text style={styles.welcomeMessage}>Host a Party!</Text>
+      <Text style={styles.userName}>here</Text>
+      </View>
+      
     </SafeAreaView>
-  );
-};
+  )
+}
 
 export default Create
