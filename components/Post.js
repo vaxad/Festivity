@@ -29,7 +29,7 @@ const Post= ({title,content,onPress}) => {
     },
     buttonContainer: {
       width: 200,
-      height: 50,
+      height: 200,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'lightgray',

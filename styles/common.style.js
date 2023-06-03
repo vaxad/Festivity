@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.small,
   },
   headerTitle: {
-    fontSize: SIZES.small,
+    fontSize: SIZES.large,
     fontFamily: FONT.medium,
     color: COLORS.primary,
   },
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginHorizontal:SIZES.large,
     gap: SIZES.small,
   },
-  //
+//
   container: {
     marginTop:SIZES.xLarge,
     marginHorizontal:SIZES.large,
