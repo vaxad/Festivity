@@ -30,6 +30,7 @@ const Post= ({title,content,onPress}) => {
     buttonContainer: {
       width: 200,
       height: 200,
+      padding: 10,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'lightgray',
@@ -37,6 +38,7 @@ const Post= ({title,content,onPress}) => {
     buttonImage: {
       width: '100%',
       height: '100%',
+      borderRadius: 25,
     },
   });
   
