@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView } from 'react-native'
 import React from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
@@ -14,8 +14,18 @@ const Posts = () => {
       <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text>
       <View>
+        <ScrollView>
         <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        </ScrollView>
       </View>
+      
       </View>
     </SafeAreaView>
   )
