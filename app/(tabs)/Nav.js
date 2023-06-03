@@ -11,14 +11,16 @@ const Tab = createBottomTabNavigator();
 const Nav = ()=>{
     return(
         <Tab.Navigator
+       
         initialRouteName="Posts"
                 screenOptions={({route})=>({tabBarIcon:({focused,color,size})=>{
-                    color=COLORS.primary;
+                    color='black';
                     let iconName;
                     let routeName=route.name;
                     switch(routeName){
                         case "Posts":
                             iconName=focused?'home':'home-outline';
+                           
                             break;
                         case "Create":
                             iconName=focused?'add-circle':'add-circle-outline';
@@ -27,6 +29,9 @@ const Nav = ()=>{
                             iconName=focused?'person':'person-outline';
                             break;
                     }
+                   
+                       
+                      
                     return <Ionicons name={iconName} size={size} color={color}></Ionicons>
                 }})}
         >

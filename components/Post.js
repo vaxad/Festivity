@@ -1,6 +1,7 @@
 //import { View, Text } from 'react-native'
 import React from 'react'
 import {Text,TouchableOpacity,StyleSheet, ImageBackground,View} from 'react-native';
+import { SIZES } from '../constants';
 
 const Post= ({title,content,onPress}) => {
         return (
@@ -9,6 +10,7 @@ const Post= ({title,content,onPress}) => {
                 <ImageBackground
                   source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}
+                  borderRadius={20}
                 >
                 <Text style={styles.buttonText}>{title}</Text>
                 <Text style={styles.buttonText}>{content}</Text>
@@ -25,23 +27,35 @@ const Post= ({title,content,onPress}) => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      padding: 12,
       justifyContent: 'center',
       alignItems: 'center',
     },
     buttonContainer: {
-      width: 200,
-      height: 200,
       
-      // justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'white',
-      padding: 20,
+      // width: 400,
+      // height: 200,
       
+      // // justifyContent: 'center',
+      // // alignItems: 'center',
+      // backgroundColor: 'grey',
+      // padding: 20,
+      borderRadius: SIZES.medium,
     },
     buttonImage: {
-      width: 362,
-      height: 156,
+      
+      left:-18,
+      width: 325,
+      height: 206,
+      top: 45,
+      paddingTop: 150,
+      paddingLeft:10,
+      
+      
+      
     },
+    
+    
   });
   
 

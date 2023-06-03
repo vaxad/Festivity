@@ -15,8 +15,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "0225220a-03ba-4fdb-8473-3d860cac9ce6"
+        "projectId": "651a2b72-674d-403e-b7f1-63fdc1a10ea6"
       }
-    }
+    },
+    "owner": "vaxad"
   }
 }

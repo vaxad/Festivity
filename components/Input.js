@@ -20,10 +20,10 @@ const Input = ({
           style.inputContainer,
           {
             borderColor: error
-              ? COLORS.primary
+              ? COLORS.white
               : isFocused
-              ? COLORS.primary
-              : COLORS.primary,
+              ? COLORS.white
+              : COLORS.black,
             alignItems: 'center',
           },
         ]}>
