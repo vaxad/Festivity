@@ -21,26 +21,19 @@ const Post= () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-    },
-    buttonContainer: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
       justifyContent: 'center',
       alignItems: 'center',
-      zIndex: 1,
     },
-    button: {
-      width: 150,
+    buttonContainer: {
+      width: 200,
       height: 50,
-      backgroundColor: 'rgba(255, 255, 255, 0.7)',
-      marginBottom: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'lightgray',
+    },
+    buttonImage: {
+      width: 20,
+      height: 20,
     },
   });
   
