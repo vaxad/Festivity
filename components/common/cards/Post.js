@@ -5,7 +5,7 @@ import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 const App = () => {
     return (
       <View style={styles.container}>
-        <Image source={require('Downloads')} style={styles.image} />
+        <Image source={require('./path/to/image.png')} style={styles.image} />
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={() => console.log('Button 1 Pressed!')}>
             {/* Button 1 content */}
@@ -20,13 +20,11 @@ const App = () => {
   
     
   
-  const styles = StyleSheet.create({
+  nst styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
     },
-    image: {    
+    image: {
       width: '100%',
       height: '100%',
     },
@@ -41,12 +39,10 @@ const App = () => {
       zIndex: 1,
     },
     button: {
-      width: 200,
+      width: 150,
       height: 50,
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
       marginBottom: 10,
-      fontWeight: 'bold',
-     color: 'white',
     },
   });
   
