@@ -4,7 +4,7 @@ import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Input from "../../components/Input";
 import Button from '../../components/Button';
-//import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import DatePicker from 'react-native-date-picker'
 
 const Create = () => {
   return (
@@ -41,13 +41,17 @@ const Input1 = ()=>{
             label="Description"
             placeholder="Tell people more about your event..."
           />
+          
 
 
 
     <Button title="Host" onPress={()=>{}}  />
+
     
   </View>
 );
 };
+
+
 
 export default Create

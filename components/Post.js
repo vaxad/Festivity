@@ -6,7 +6,7 @@ import { COLORS, FONT, SIZES } from '../constants';
 const Post= ({title,content,onPress}) => {
         return (
           <View style={styles.container}>
-              <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={() => onPress()}>
                 <ImageBackground
                   source={require('../assets/images/holi.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}

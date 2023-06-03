@@ -10,6 +10,7 @@ import Nav from "./(tabs)/Nav";
 import Login from "./login/Login";
 import Menu from './Screens/Menu';
 import { useNavigation } from 'expo-router';
+import PostClick from './Screens/PostClick';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -75,6 +76,15 @@ const StackLayout=()=>{
               <Stack.Screen
             name="login"
             component={Login}
+            options={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false
+              }}/>
+              <Stack.Screen
+            name="postClick"
+            component={PostClick}
             options={{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
