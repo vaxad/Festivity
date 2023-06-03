@@ -1,10 +1,10 @@
-import { View, Text, SafeAreaView, TextInput } from 'react-native'
+import { View, Text, SafeAreaView, TextInput  } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Input from "../../components/Input";
 import Button from '../../components/Button';
-//import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Create = () => {
   return (
@@ -41,6 +41,8 @@ const Input1 = ()=>{
             label="Description"
             placeholder="Tell people more about your event..."
           />
+
+
 
     <Button title="Host" onPress={()=>{}}  />
     
