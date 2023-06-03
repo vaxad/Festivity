@@ -4,9 +4,12 @@ import Input from "../../components/Input";
 import Loader from "../../components/Loader";
 import { useState } from "react";
 import { COLORS } from "../../constants";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/action";
 
 
 const Login = () => {
+  const dispatch=useDispatch();
   const [phone,setPhone]=useState('')
   const [code,setCode]=useState('')
   const [loading,setLoading]=useState(false);
@@ -14,7 +17,18 @@ const Login = () => {
   const [isDisabled2,setisDisabled2]=useState('')
 
   
-
+  const handleSubmit=()=>{
+    const formdata={
+      "name":"none",
+      "phone":phone
+    }
+    console.log(formdata)
+    try {
+      dispatch(register(formdata))
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
 
   
@@ -49,7 +63,7 @@ const Login = () => {
             label="OTP"
             placeholder="Enter OTP"
           />
-          <Button title="Verify OTP" onPress={()=>{}}  />
+          <Button title="Verify OTP" onPress={()=>{handleSubmit()}}  />
         </View>
       </ScrollView>
     </SafeAreaView>

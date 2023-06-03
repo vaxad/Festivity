@@ -11,7 +11,7 @@ const Profile = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Profile</Text>
       <Image 
-      source={require('./your-img.png')}  
+      source={require('../../assets/images/kemal.jpg')}  
       style={{width: 400, height: 400, borderRadius: 400/ 2}} 
       />
       

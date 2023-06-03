@@ -12,13 +12,16 @@
 import { createContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 import * as WebBrowser from "expo-web-browser";
+import { Provider, useDispatch } from "react-redux";
 import * as Google from "expo-auth-session/providers/google";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import StackLayout from "./Main";
+import store from "../redux/store";
 
 WebBrowser.maybeCompleteAuthSession();
 export const context =createContext();
 export default function App() {
+  
 //   const [token, setToken] = useState("");
 //   const [userInfo, setUserInfo] = useState(null);
 
@@ -71,6 +74,7 @@ export default function App() {
 //   };
 
   return (
+    
     // <View style={styles.container}>
     //   {!userInfo ? (
     //     <Button
@@ -81,13 +85,16 @@ export default function App() {
     //       }}
     //     />
     //   ) : (
+      <Provider store={store}>
         <StackLayout/>
+        </Provider>
     //   )}
     //   <Button
     //     title="remove local store"
     //     onPress={async () => await AsyncStorage.removeItem("@user")}
     //   />
     // </View>
+    
   );
 }
 
