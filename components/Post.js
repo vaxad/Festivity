@@ -41,7 +41,7 @@ const Post= ({title,content,onPress}) => {
       fontSize: SIZES.xLarge,
       color: COLORS.white,
       marginTop: -6,
-      shad
+     
       },
       buttonsText:{
         fontFamily: FONT.medium,
