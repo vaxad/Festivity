@@ -1,11 +1,11 @@
 import { View, Text,SafeAreaView } from 'react-native'
 import React from 'react'
-import PhoneNumberInputExample from './PhoneNumberInputExample';
+import PhoneNumberInputExample from './Login';
 
 const Login = () => {
   return (
     <SafeAreaView>
-      <PhoneNumberInputExample />
+      <Login />
     </SafeAreaView>
   );
 };
