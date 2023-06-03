@@ -18,5 +18,20 @@ const Posts = () => {
     </SafeAreaView>
   )
 }
+const styles = StyleSheet.create({
+  postContainer: {
+    backgroundColor: 'lightgray',
+    padding: 10,
+    marginBottom: 10,
+  },
+  postTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  postContent: {
+    fontSize: 16,
+  },
+});
+
 
 export default Posts
