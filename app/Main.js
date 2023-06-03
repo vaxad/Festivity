@@ -41,7 +41,7 @@ const StackLayout=()=>{
                     headerLeft: () => {
                         return(
                         <View style={{marginLeft:20}}>
-                        <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('menu')}}/>
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login')}}/>
                         </View>
                         )
                     },
@@ -66,6 +66,15 @@ const StackLayout=()=>{
             <Stack.Screen
             name="menu"
             component={Menu}
+            options={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false
+              }}/>
+              <Stack.Screen
+            name="login"
+            component={Login}
             options={{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
