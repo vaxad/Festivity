@@ -2,7 +2,7 @@
 import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet, ImageBackground} from 'react-native';
 
-const Post= (title,content,onPress) => {
+const Post= ({title,content,onPress}) => {
         return (
             <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
