@@ -10,6 +10,7 @@ const Post= ({title,content,onPress}) => {
                 <ImageBackground
                   source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}
+                  borderRadius={20}
                 >
                 <Text style={styles.buttonText}>{title}</Text>
                 <Text style={styles.buttonText}>{content}</Text>
@@ -43,17 +44,17 @@ const Post= ({title,content,onPress}) => {
     },
     buttonImage: {
       
-
       left:-18,
       width: 325,
-      height: 156,
+      height: 206,
       top: 45,
+      paddingTop: 150,
+      paddingLeft:10,
+      
       
       
     },
-    button:{
-      borderRadius: 50,
-    },
+    
     
   });
   
