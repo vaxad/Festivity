@@ -2,7 +2,7 @@
 import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
-const App = () => {
+const Post= () => {
     return (
       <View style={styles.container}>
         <Image source={require('./path/to/image.png')} style={styles.image} />
@@ -20,7 +20,7 @@ const App = () => {
   
     
   
-  nst styles = StyleSheet.create({
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
