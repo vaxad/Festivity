@@ -10,11 +10,24 @@ const Create = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
       <Text style={styles.userName}>here</Text>
-    
-      </View>
+    </View>
       
     </SafeAreaView>
   )
 }
+
+const input = ()=>{
+  const [text, setText] = useState('');
+  return(
+    <View style={{padding: 10}}>
+    <TextInput
+      style={{height: 40}}
+      placeholder="Give your event wonderful title"
+      onChangeText={newText => setText(newText)}
+      defaultValue={text}
+    />
+  </View>
+);
+};
 
 export default Create
