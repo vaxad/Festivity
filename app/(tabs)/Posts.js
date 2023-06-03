@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
-import Post from '../../components/Posts'
+import Post from '../../components/Post'
 
 
 
