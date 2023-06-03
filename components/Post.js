@@ -8,7 +8,7 @@ const Post= ({title,content,onPress}) => {
           <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
                 <ImageBackground
-                  source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
+                  source={require('../assets/images/holi.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}
                   borderRadius={20}
                   

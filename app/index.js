@@ -9,7 +9,7 @@
 
 // export default StartPage
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View, Button, Image } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
@@ -17,7 +17,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import StackLayout from "./Main";
 
 WebBrowser.maybeCompleteAuthSession();
-
+export const context =createContext();
 export default function App() {
 //   const [token, setToken] = useState("");
 //   const [userInfo, setUserInfo] = useState(null);
