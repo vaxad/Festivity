@@ -4,17 +4,15 @@ import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
 const Post= () => {
     return (
-      <View style={styles.container}>
-        <Image source={require('./path/to/image.png')} style={styles.image} />
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('Button 1 Pressed!')}>
-            {/* Button 1 content */}
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => console.log('Button 2 Pressed!')}>
-            {/* Button 2 content */}
-          </TouchableOpacity>
-        </View>
-      </View>
+        return (
+            <View style={styles.container}>
+              <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
+                <Image
+                  source={require('./path/to/image.png')} // Replace with the path to your image
+                  style={styles.buttonImage}
+                />
+              </TouchableOpacity>
+            </View>
     );
   };
   
