@@ -4,7 +4,19 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "moment0",
-    "slug": "moment0"
+    "name": "festivity",
+    "slug": "festivity",
+    "android": {
+      "package": "com.vaxad.festivity"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vaxad.festivity"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0225220a-03ba-4fdb-8473-3d860cac9ce6"
+      }
+    }
   }
 }
