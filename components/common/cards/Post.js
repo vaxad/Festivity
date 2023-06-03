@@ -2,27 +2,50 @@
 import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
-const Post = ({ title, content, onPress }) => {
+const Post = () => {
+    const [imageUri, setImageUri] = useState(null);
+  
+    const selectImage = async () => {
+      try {
+        const result = await ImagePicker.launchImageLibraryAsync();
+        if (!result.cancelled) {
+          setImageUri(result.uri);
+        }
+      } catch (error) {
+        console.log('Error selecting image:', error);
+      }
+    };
+  
     return (
-      <TouchableOpacity style={styles.postContainer} onPress={onPress}>
-        <Text style={styles.postTitle}>{title}</Text>
-        <Text style={styles.postContent}>{content}</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={selectImage}>
+          {imageUri ? (
+            <Image source={{ uri: imageUri }} style={styles.buttonImage} />
+          ) : (
+            <Image source={require('./path/to/default/image.png')} style={styles.buttonImage} />
+          )}
+        </TouchableOpacity>
+      </View>
     );
   };
   
   const styles = StyleSheet.create({
-    postContainer: {
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    buttonContainer: {
+      width: 200,
+      height: 200,
+      justifyContent: 'center',
+      alignItems: 'center',
       backgroundColor: 'lightgray',
-      padding: 10,
-      marginBottom: 10,
     },
-    postTitle: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    postContent: {
-      fontSize: 16,
+    buttonImage: {
+      width: 150,
+      height: 150,
+      resizeMode: 'cover',
     },
   });
 
