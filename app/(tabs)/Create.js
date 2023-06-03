@@ -9,7 +9,6 @@ const Create = () => {
     <View style={{marginTop:90}}/>
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
-      <Text style={styles.userName}>here</Text>
     </View>
     <Input></Input>
           </SafeAreaView>
@@ -25,6 +24,13 @@ const Input = ()=>{
     <TextInput
       style={{height: 40}}
       placeholder="Give your event wonderful title"
+      onChangeText={newText => setText(newText)}
+      defaultValue={text}
+    />
+    <Text Style={styles.Text}>Description</Text>
+    <TextInput
+      style={{height: 40}}
+      placeholder="Tell people more about your Event..."
       onChangeText={newText => setText(newText)}
       defaultValue={text}
     />
