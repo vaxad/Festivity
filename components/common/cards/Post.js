@@ -24,6 +24,7 @@ const Post = () => {
           ) : (
             <Image source={require('./path/to/default/image.png')} style={styles.buttonImage} />
           )}
+          <Text style={styles.buttonText}>Click Me</Text>
         </TouchableOpacity>
       </View>
     );
@@ -32,8 +33,10 @@ const Post = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    image: {
+    image: {    
       width: '100%',
       height: '100%',
     },
@@ -48,10 +51,12 @@ const Post = () => {
       zIndex: 1,
     },
     button: {
-      width: 150,
+      width: 200,
       height: 50,
       backgroundColor: 'rgba(255, 255, 255, 0.7)',
       marginBottom: 10,
+      fontWeight: 'bold',
+     color: 'white',
     },
   });
   
