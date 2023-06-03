@@ -11,6 +11,7 @@ const Post= () => {
                   source={require('./path/to/image.png')} // Replace with the path to your image
                   style={styles.buttonImage}
                 />
+                <Text style={styles.buttonText}>Click Me</Text>
               </TouchableOpacity>
             </View>
     );
