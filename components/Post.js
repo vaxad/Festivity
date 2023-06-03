@@ -30,12 +30,12 @@ const Post= ({title,content,onPress}) => {
     buttonContainer: {
       width: 200,
       height: 200,
-      padding: 10,
-      justifyContent: 'center',
       
+      // justifyContent: 'center',
+      alignItems: 'center',
       backgroundColor: 'white',
       padding: 20,
-
+      
     },
     buttonImage: {
       width: '100%',
