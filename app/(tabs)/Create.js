@@ -4,7 +4,7 @@ import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Input from "../../components/Input";
 import Button from '../../components/Button';
-import DatePicker from 'react-native-date-picker'
+//import DatePicker from 'react-native-date-picker'
 
 const Create = () => {
   return (
