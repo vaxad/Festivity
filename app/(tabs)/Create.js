@@ -23,7 +23,7 @@ const Input1 = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
-    <Input
+    <Input 
             keyboardType="text"
             onFocus={() => {}}
             label="Title"

@@ -32,7 +32,7 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.data.user;
-      //(state.user);
+      console.log(state.user);
       //a.setState('hii')
       state.message = action.payload.data.message;
 
@@ -59,33 +59,63 @@ export const authReducer = createReducer(
       state.error = action.payload.data;
     },
 
-    loadProfileRequest: (state) => {
+    getUserRequest: (state) => {
       state.loading = true;
     },
-    loadProfileSuccess: (state, action) => {
+    getUserSuccess: (state, action) => {
       ////('load')
       state.loading = false;
       state.isAuthenticated = true;
-      state.profile = action.payload.profile;
+      state.user = action.payload.user;
       ////(action.payload);
     },
-    loadProfileFailure: (state, action) => {
+    getUserFailure: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload.data;
     },
 
-    deleteProfileRequest: (state) => {
+    loadPostRequest: (state) => {
       state.loading = true;
     },
-    deleteProfileSuccess: (state, action) => {
+    loadPostSuccess: (state, action) => {
       ////('load')
       state.loading = false;
       state.isAuthenticated = true;
-      ////(action.payload.profile)
+      state.post = action.payload.post;
       ////(action.payload);
     },
-    deleteProfileFailure: (state, action) => {
+    loadPostFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.data;
+    },
+
+    loadAllPostRequest: (state) => {
+      state.loading = true;
+    },
+    loadAllPostSuccess: (state, action) => {
+      ////('load')
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.allPosts = action.payload.posts;
+      ////(action.payload);
+    },
+    loadAllPostFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.data;
+    },
+
+    deletePostRequest: (state) => {
+      state.loading = true;
+    },
+    deletePostSuccess: (state, action) => {
+      ////('load')
+      state.loading = false;
+      state.isAuthenticated = true;
+      ////(action.payload.post)
+      ////(action.payload);
+    },
+    deletePostFailure: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload.data;
@@ -125,27 +155,27 @@ export const authReducer = createReducer(
       state.message = null;
     },
 
-    updateProfileRequest: (state) => {
+    updatePostRequest: (state) => {
       state.loading = true;
     },
-    updateProfileSuccess: (state, action) => {
+    updatePostSuccess: (state, action) => {
       ////(action.payload)
       state.loading = false;
       state.nameAdd = true;
       state.message = action.payload.message;
     },
-    updateProfileFailure: (state, action) => {
+    updatePostFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload.data;
     },
-    addTaskRequest: (state) => {
+    addPostRequest: (state) => {
       state.loading = true;
     },
-    addTaskSuccess: (state, action) => {
+    addPostSuccess: (state, action) => {
       state.loading = false;
       state.message = action.payload.data;
     },
-    addTaskFailure: (state, action) => {
+    addPostFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload.data;
     },

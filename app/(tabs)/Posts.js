@@ -9,10 +9,10 @@ import Post from '../../components/Post'
 const Posts = () => {
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
-      <View style={{marginTop:90}}/>
+      <View style={{marginTop:70}}/>
       <View style={styles.container}>
-      <Text style={styles.welcomeMessage}>Posts</Text>
-      <Text style={styles.userName}>here</Text>
+      {/* <Text style={styles.welcomeMessage}>Posts</Text>
+      <Text style={styles.userName}>here</Text> */}
       <View>
         <ScrollView>
         <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
