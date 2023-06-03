@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.small,
   },
   headerTitle: {
-    fontSize: SIZES.large,
+    fontSize: SIZES.small,
     fontFamily: FONT.medium,
     color: COLORS.primary,
   },
