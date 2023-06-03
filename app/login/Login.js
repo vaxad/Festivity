@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import PhoneNumberInputExample from './PhoneNumberInputExample';
+import PhoneNumberInput from './PhoneNumberInput';
 
 const Login = () => {
   return (
