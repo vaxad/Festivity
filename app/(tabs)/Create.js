@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, TextInput } from 'react-native'
+import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 
