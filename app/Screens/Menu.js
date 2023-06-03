@@ -8,7 +8,7 @@ const Menu = () => {
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
     <View style={{marginTop:30}}/>
       <View style={styles.container}>
-      <Text style={styles.welcomeMessage}>Menu</Text>
+      <Text style={styles.welcomeMessage}>Menmghvjhchchgchcfcffcu</Text>
       <Text style={styles.userName}>here</Text>
       </View>
     </SafeAreaView>
