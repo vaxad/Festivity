@@ -32,21 +32,28 @@ const Post = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+    },
+    image: {
+      width: '100%',
+      height: '100%',
     },
     buttonContainer: {
-      width: 200,
-      height: 200,
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'lightgray',
+      zIndex: 1,
     },
-    buttonImage: {
+    button: {
       width: 150,
-      height: 150,
-      resizeMode: 'cover',
+      height: 50,
+      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+      marginBottom: 10,
     },
   });
+  
 
 export default Post
