@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Input from "../../components/Input";
-import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Create = () => {
   return (
@@ -24,24 +24,18 @@ const Input1 = ()=>{
     <View style={{padding: 10}}>
     <Input
             keyboardType="text"
-            onChangeText={setPhone}
-            value={phone}
             onFocus={() => {}}
             label="Title"
             placeholder="Give your event a wonderful title"
           />
     <Input
             keyboardType="text"
-            onChangeText={setPhone}
-            value={phone}
             onFocus={() => {}}
             label="Venue"
             placeholder="Tell people where your event will take place"
           />
     <Input
             keyboardType="text"
-            onChangeText={setPhone}
-            value={phone}
             onFocus={() => {}}
             label="Description"
             placeholder="Tell people more about your event..."
