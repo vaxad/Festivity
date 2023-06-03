@@ -12,11 +12,16 @@ const Profile = () => {
       <Text style={styles.welcomeMessage}>Profile</Text>
       <Image 
       source={require('../../assets/images/kemal.jpg')}  
-      style={{width: 400, height: 400, borderRadius: 400/ 2}} 
+      style={{width: 200, height: 200, borderRadius: 400/ 2}} 
       />
-      
-       
       <Text style={styles.userName}>Username</Text>
+
+      const [text,setText]=useState('');
+      return(
+        <View style ={{padding:10}}>
+          <text>7208229998</text>
+        </View>
+      )
 
       </View>
     </SafeAreaView>
