@@ -10,7 +10,7 @@ const Post= (title,content,onPress) => {
                   source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}
                 >
-                <Text style={styles.buttonText}>Click Me</Text></ImageBackground>
+                <Text style={styles.buttonText}>{title}</Text></ImageBackground>
               </TouchableOpacity>
               
             </View>
