@@ -46,13 +46,13 @@ const StackLayout=()=>{
                         </View>
                         )
                     },
-                    // headerRight: () => {
-                    //     return(
-                    //         <View style={{marginRight:20}}>
-                    //     <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%" />
-                    //     </View>
-                    //     )
-                    // },
+                    headerRight: () => {
+                        return(
+                            <View style={{marginRight:20}}>
+                        <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%"  handlePress={()=>{navigation.navigate('login')}}/>
+                        </View>
+                        )
+                    },
                     title: "festivity",
           headerTransparent:"true",
           headerTitleAlign: 'center',
