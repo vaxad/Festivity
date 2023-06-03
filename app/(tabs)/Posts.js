@@ -12,10 +12,7 @@ const Posts = () => {
       <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text>
       <View>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
+        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
       </View>
       </View>
     </SafeAreaView>
