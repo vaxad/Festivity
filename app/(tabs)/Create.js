@@ -5,10 +5,10 @@ import { COLORS } from '../../constants'
 
 const Create = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Host a Party</Text>
       {/* Add other components and logic */}
-    </View>
+    </SafeAreaView>
   );
 };
 
