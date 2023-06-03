@@ -40,6 +40,8 @@ const Input1 = ()=>{
             label="Description"
             placeholder="Tell people more about your event..."
           />
+
+    <Button title="Host" onPress={()=>{}}  />
     
   </View>
 );
