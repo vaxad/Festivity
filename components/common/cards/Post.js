@@ -5,7 +5,7 @@ import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 const App = () => {
     return (
       <View style={styles.container}>
-        <Image source={require('./path/to/image.png')} style={styles.image} />
+        <Image source={require('Downloads')} style={styles.image} />
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={() => console.log('Button 1 Pressed!')}>
             {/* Button 1 content */}
