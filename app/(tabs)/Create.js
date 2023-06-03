@@ -16,28 +16,4 @@ const Create = () => {
   )
 }
 
-const UserInputExample = () => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (text) => {
-    setInputValue(text);
-  };
-
-  const handleButtonPress = () => {
-    // Perform any desired action with the input value
-    console.log(inputValue);
-  };
-
-  return (
-    <View>
-      <TextInput
-        value={inputValue}
-        onChangeText={handleInputChange}
-        placeholder="Enter your input"
-      />
-      <Button title="Submit" onPress={handleButtonPress} />
-    </View>
-  );
-};
-
 export default Create
