@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import Nav from "./(tabs)/Nav";
-import Login from "./login/Login";
+import Login2 from "./login/Login2";
 import Menu from './Screens/Menu';
 import { useNavigation } from 'expo-router';
 import PostClick from './Screens/PostClick';
@@ -42,7 +42,7 @@ const StackLayout=()=>{
                     headerLeft: () => {
                         return(
                         <View style={{marginLeft:20}}>
-                        <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login')}}/>
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login2')}}/>
                         </View>
                         )
                     },
@@ -74,8 +74,8 @@ const StackLayout=()=>{
                 headerShown: false
               }}/>
               <Stack.Screen
-            name="login"
-            component={Login}
+            name="login2"
+            component={Login2}
             options={{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",

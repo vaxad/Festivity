@@ -19,6 +19,7 @@
     "expo-auth-session": "~4.0.3",
     "expo-constants": "~14.2.1",
     "expo-crypto": "~12.2.1",
+    "expo-firebase-recaptcha": "^2.3.1",
     "expo-linking": "~4.0.1",
     "expo-router": "^1.2.0",
     "expo-splash-screen": "~0.18.2",
@@ -37,6 +38,7 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
+    "react-native-webview": "^12.2.0",
     "react-redux": "^8.0.7",
     "typescript": "^4.9.4"
   },
