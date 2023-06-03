@@ -2,33 +2,23 @@
 import React from 'react'
 import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
 
-const Post = () => {
-    const [imageUri, setImageUri] = useState(null);
-  
-    const selectImage = async () => {
-      try {
-        const result = await ImagePicker.launchImageLibraryAsync();
-        if (!result.cancelled) {
-          setImageUri(result.uri);
-        }
-      } catch (error) {
-        console.log('Error selecting image:', error);
-      }
-    };
-  
+const App = () => {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.buttonContainer} onPress={selectImage}>
-          {imageUri ? (
-            <Image source={{ uri: imageUri }} style={styles.buttonImage} />
-          ) : (
-            <Image source={require('./path/to/default/image.png')} style={styles.buttonImage} />
-          )}
-          <Text style={styles.buttonText}>Click Me</Text>
-        </TouchableOpacity>
+        <Image source={require('./path/to/image.png')} style={styles.image} />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('Button 1 Pressed!')}>
+            {/* Button 1 content */}
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => console.log('Button 2 Pressed!')}>
+            {/* Button 2 content */}
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
+  
+    
   
   const styles = StyleSheet.create({
     container: {
