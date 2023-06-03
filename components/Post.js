@@ -39,8 +39,8 @@ const Post= ({title,content,onPress}) => {
       
     },
     buttonImage: {
-      width: '100%',
-      height: '100%',
+      width: 362,
+      height: 156,
     },
   });
   
