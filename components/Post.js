@@ -28,8 +28,8 @@ const Post= ({title,content,onPress}) => {
       alignItems: 'center',
     },
     buttonContainer: {
-      width: 200,
-      height: 200,
+      width: 900,
+      height: 900,
       
       // justifyContent: 'center',
       alignItems: 'center',
