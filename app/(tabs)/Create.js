@@ -11,12 +11,13 @@ const Create = () => {
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
       <Text style={styles.userName}>here</Text>
     </View>
-      
-    </SafeAreaView>
+    <Input></Input>
+          </SafeAreaView>
+  
   )
 }
 
-const input = ()=>{
+const Input = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
