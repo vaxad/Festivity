@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from '../../styles/common.style'
-import { COLORS } from '../../constants'
+import { COLORS ,SIZES} from '../../constants'
 import { Image } from 'react-native'
 
 const Profile = () => {
@@ -16,14 +16,89 @@ const Profile = () => {
       />
       <Text style={styles.userName}>Username</Text>
 
-        <View style ={{padding:10}}>
+      <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}>
           <Text>7208229998</Text>
         </View>
+
+        <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}>
+          <Text>Address</Text>
+        </View>
+        
+        <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}>
+        <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}><Text>Interest1</Text></View>
+
+
+        <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}><Text>Interest2</Text></View>
+
+        <TouchableOpacity>
+        <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}><Text>+</Text></View>
+        </TouchableOpacity>
+          
+        </View>
+        
+
       
 
       </View>
     </SafeAreaView>
   )
 } 
+const style = StyleSheet.create({
+  label: {
+    marginVertical: 5,
+    fontSize: 14,
+    color: COLORS.gray,
+  },
+  inputContainer: {
+    height: 55,
+    backgroundColor: COLORS.light,
+    borderRadius:SIZES.large/0.5,
+    flexDirection: 'row',
+    paddingHorizontal: 15,
+    borderWidth: 0.5,
+  },
+});
 
 export default Profile
