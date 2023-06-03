@@ -1,13 +1,13 @@
 //import { View, Text } from 'react-native'
 import React from 'react'
-import {View,Text,TouchableOpacity,StyleSheet} from 'react-native';
+import {View,Text,TouchableOpacity,StyleSheet, ImageBackground} from 'react-native';
 
 const Post= () => {
         return (
             <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
                 <ImageBackground
-                  source={require('./path/to/image.png')} // Replace with the path to your image
+                  source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
                   style={styles.buttonImage}
                 >
                 <Text style={styles.buttonText}>Click Me</Text></ImageBackground>
