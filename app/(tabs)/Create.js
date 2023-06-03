@@ -2,6 +2,8 @@ import { View, Text, SafeAreaView, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
+import Input from "../../components/Input";
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Create = () => {
   return (
@@ -20,20 +22,31 @@ const Input = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
-    <Text Style = {styles.Text}>Title</Text>
-    <TextInput
-      style={{height: 40}}
-      placeholder="Give your event wonderful title"
-      onChangeText={newText => setText(newText)}
-      defaultValue={text}
-    />
-    <Text Style={styles.Text}>Description</Text>
-    <TextInput
-      style={{height: 40}}
-      placeholder="Tell people more about your Event..."
-      onChangeText={newText => setText(newText)}
-      defaultValue={text}
-    />
+    <Input
+            keyboardType="Text"
+            onChangeText={setPhone}
+            value={phone}
+            onFocus={() => {}}
+            label="Title"
+            placeholder="Give your event a wonderful title"
+          />
+    <Input
+            keyboardType="text"
+            onChangeText={setPhone}
+            value={phone}
+            onFocus={() => {}}
+            label="Venue"
+            placeholder="Tell people where your event will take place"
+          />
+    <Input
+            keyboardType="text"
+            onChangeText={setPhone}
+            value={phone}
+            onFocus={() => {}}
+            label="Description"
+            placeholder="Tell people more about your event..."
+          />
+    
   </View>
 );
 };
