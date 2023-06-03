@@ -1,13 +1,13 @@
-import { View, Text,SafeAreaView } from 'react-native'
-import React from 'react'
-import PhoneNumberInputExample from './Login';
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+import PhoneNumberInputExample from './PhoneNumberInputExample';
 
 const Login = () => {
   return (
     <SafeAreaView>
-      <Login />
+      <PhoneNumberInputExample />
     </SafeAreaView>
   );
 };
 
-export default Login
+export default Login;
