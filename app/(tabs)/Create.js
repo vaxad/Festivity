@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Input from "../../components/Input";
+import Button from '../../components/Button';
 //import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Create = () => {
