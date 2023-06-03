@@ -16,12 +16,10 @@ const Profile = () => {
       />
       <Text style={styles.userName}>Username</Text>
 
-      const [text,setText]=useState('');
-      return(
         <View style ={{padding:10}}>
           <Text>7208229998</Text>
         </View>
-      )
+      
 
       </View>
     </SafeAreaView>
