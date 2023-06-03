@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, TextInput } from 'react-native'
+import React, { useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 
@@ -9,20 +9,28 @@ const Create = () => {
     <View style={{marginTop:90}}/>
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
-      <Text style={styles.userName}>here</Text>
     </View>
-      
-    </SafeAreaView>
+    <Input></Input>
+          </SafeAreaView>
+  
   )
 }
 
-const input = ()=>{
+const Input = ()=>{
   const [text, setText] = useState('');
   return(
     <View style={{padding: 10}}>
+    <Text Style = {styles.Text}>Title</Text>
     <TextInput
       style={{height: 40}}
       placeholder="Give your event wonderful title"
+      onChangeText={newText => setText(newText)}
+      defaultValue={text}
+    />
+    <Text Style={styles.Text}>Description</Text>
+    <TextInput
+      style={{height: 40}}
+      placeholder="Tell people more about your Event..."
       onChangeText={newText => setText(newText)}
       defaultValue={text}
     />
