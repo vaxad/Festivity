@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
+import { Image } from 'react-native'
 
 const Profile = () => {
   return (
@@ -9,7 +10,14 @@ const Profile = () => {
     <View style={{marginTop:90}}/>
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Profile</Text>
-      <Text style={styles.userName}>here</Text>
+      <Image 
+      source={require('./your-img.png')}  
+      style={{width: 400, height: 400, borderRadius: 400/ 2}} 
+      />
+      
+       
+      <Text style={styles.userName}>Username</Text>
+
       </View>
     </SafeAreaView>
   )
