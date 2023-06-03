@@ -19,7 +19,7 @@ const Profile = () => {
       const [text,setText]=useState('');
       return(
         <View style ={{padding:10}}>
-          <text>7208229998</text>
+          <Text>7208229998</Text>
         </View>
       )
 
