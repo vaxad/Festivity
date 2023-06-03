@@ -3,10 +3,12 @@ import React from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
 import Post from '../../components/Post'
-
+import { useSelector } from 'react-redux'
 
 
 const Posts = () => {
+  
+const { user } = useSelector(state => state.auth)
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
       <View style={{marginTop:70}}/>
@@ -15,7 +17,7 @@ const Posts = () => {
       <Text style={styles.userName}>here</Text> */}
       <View>
         <ScrollView>
-        <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
+        <Post title={user?user.name:"rudra"} content="hjtjhhhgj" onPress={()=>{}}/>
         <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
         <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>
         <Post title="Rudra" content="hjtjhhhgj" onPress={()=>{}}/>

@@ -49,6 +49,12 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
     marginTop: 2,
   },
+  titleText: {
+    fontFamily: FONT.bold,
+    fontSize: 40,
+    color: COLORS.primary,
+    marginTop: 2,
+  },
   searchContainer: {
     justifyContent: "center",
     backgroundColor:"#000000",

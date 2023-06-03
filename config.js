@@ -1,9 +1,8 @@
 import firebase from "@firebase/app-compat";
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import firebaseConfig from "./firebaseConfig";
 
-export const firbaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyBIFUy2UtJzlbTrHS2GdsaLr-CKKo5m6g0",
     authDomain: "festivity0-6afdc.firebaseapp.com",
     projectId: "festivity0-6afdc",
