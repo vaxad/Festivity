@@ -1,10 +1,10 @@
 //import { View, Text } from 'react-native'
 import React from 'react'
-import {Text,TouchableOpacity,StyleSheet, ImageBackground, ScrollView} from 'react-native';
+import {Text,TouchableOpacity,StyleSheet, ImageBackground,View} from 'react-native';
 
 const Post= ({title,content,onPress}) => {
         return (
-          <ScrollView style={styles.container}>
+          <View style={styles.container}>
               <TouchableOpacity style={styles.buttonContainer} onPress={() => console.log('Button Pressed!')}>
                 <ImageBackground
                   source={require('../assets/images/kemal.jpg')} // Replace with the path to your image
@@ -16,7 +16,7 @@ const Post= ({title,content,onPress}) => {
               </TouchableOpacity>
               
             
-            </ScrollView>
+            </View>
     );
   };
   
