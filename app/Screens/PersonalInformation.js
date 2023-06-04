@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View ,TextInput,Text,ScrollView} from 'react-native';
-import { RadioButton } from 'react-native-paper';
 import Input from '../../components/Input';
 
 const YourComponent = () => {

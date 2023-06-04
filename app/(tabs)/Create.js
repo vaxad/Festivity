@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput  } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, RefreshControl  } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/common.style'
 import { COLORS } from '../../constants'
@@ -10,6 +10,7 @@ import { addPost, loadAllPost, loadUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 //import DatePicker from 'react-native-date-picker'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Create = () => {
   const [title,setTitle]=useState('')
@@ -19,10 +20,17 @@ const Create = () => {
   const navigation=useNavigation();
   const [Daate,setDate]=useState('');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [refreshing, setRefreshing] = React.useState(false);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   const formdata=new FormData()
 
@@ -44,22 +52,30 @@ const Create = () => {
   const { user } = useSelector(state => state.auth)
   const handleCreate=()=>{
     
-    formdata.append({
+   const  forata={
       "title":title,
       "description":desc,
       "venue":venue,
-    })
-    dispatch(addPost(formdata))
+    }
+    dispatch(addPost(forata))
     dispatch(loadAllPost())
     navigation.navigate('tabs',{screen:'Posts'})
+    setDesc('');
+    setTitle('');
+    setVenue('')
+    onRefresh();
   }
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
     <View style={{marginTop:90}}/>
+    <ScrollView refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
       <View style={styles.container}>
+        
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
     </View>
-    <View style={{padding: 20}}>
+    <View style={{padding: 10}}>
     <Input 
             keyboardType="text"
             onChangeText={setTitle}
@@ -92,10 +108,11 @@ const Create = () => {
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       /> */}
-    <Button title="Host" onPress={handleCreate}  />
+    <Button title="Host" onPress={()=>{handleCreate()}}  />
 
     
   </View>
+  </ScrollView>
           </SafeAreaView>
   
   )
@@ -116,7 +133,7 @@ const Input1 = ({user})=>{
       "date":"2023-06-03T21:33:57.870+00:00"
     }
     //console.log(formdata)
-    //dispatch(addPost(formdata))
+    dispatch(addPost(formdata))
   }
   
   return(
@@ -147,13 +164,12 @@ const Input1 = ({user})=>{
           />
           
 
-          <Pressable style={styles.button} onPress={onPress}/>
+    <Button title="Host" onPress={()=>{handleCreate()}}  />
 
     
   </View>
 );
 };
-
 
 
 

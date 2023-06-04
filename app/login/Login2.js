@@ -54,7 +54,7 @@ const Login2 = () => {
     setPhoneNumber('');
     setCode('');
     setDisabled(false);
-    setName('');
+    setName('');;
   }
 
 

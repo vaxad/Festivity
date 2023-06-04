@@ -66,7 +66,9 @@ const Profile = () => {
           style.inputContainer,
           {
             width:340,
-           top:34,
+           top:81,
+           left:7,
+
             borderColor:COLORS.black,
             alignItems: 'center',
             

@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginHorizontal:SIZES.large,
     paddingHorizontal:SIZES.small,
     width: "100%",
+    
   },
   container2: {
     paddingTop:SIZES.xxLarge,

@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     
 
     // left:-18,
-    width: 336,
+    width: 328,
     height: 206,
     right: 16,
     top: 0,
