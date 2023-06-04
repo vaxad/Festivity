@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../redux/action';
 import Review from './Screens/Review';
 import PersonalInformation from './Screens/PersonalInformation';
+import SearchBar from "react-native-dynamic-search-bar";
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -56,24 +57,31 @@ const StackLayout=()=>{
             name="tabs"
             component={Nav}
                 options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
-                    headerShadowVisible: false,
-                    headerLeft: () => {
-                        return(
-                        <View style={{marginLeft:15}}>
-                        <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login2')}}/>
-                        </View>
-                        )
-                    },
-                    headerRight: () => {
-                        return(
-                            <View style={{marginRight:20}}>
-                        <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%" handlePress={()=>{navigation.navigate('Review')}}/>
-                        </View>
-                        )
-                    },
-                    title: "Festivity",
-          headerTransparent:"true",
+                    headerShown:false,
+                    headerStyle: { backgroundColor: COLORS.primary },
+                    headerShadowVisible: true,
+                    headerLeft: () => null,
+                    // headerLeft: () => {
+                    //     return(
+                    //     <View style={{marginLeft:15}}>
+                    //     <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login2')}}/>
+                    //     </View>
+                    //     )
+                    // },
+                    // headerRight: () => {
+                    //     return(
+                    //         <View style={{marginRight:20}}>
+                    //     <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%" handlePress={()=>{navigation.navigate('Review')}}/>
+                    //     </View>
+                    //     )
+                    // },
+                    headerTitle:()=><SearchBar
+                    placeholder="Search here"
+                    style={{borderRadius:20}}
+                    onPress={() => {}}
+                    onChangeText={(text) => console.log(text)}
+                  />,
+          headerTransparent:false,
           headerTitleAlign: 'center',
           headerTitleStyle:{
             fontFamily: FONT.bold,

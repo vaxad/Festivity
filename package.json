@@ -6,6 +6,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "react-native-animated-spinkit": ">= 1.5.0",
+    "@freakycoder/react-native-bounceable": ">= 0.2.2",
     "@firebase/app-compat": "^0.2.11",
     "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-native-community/datetimepicker": "6.7.3",

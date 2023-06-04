@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView, TextInput, RefreshControl  } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, RefreshControl, StyleSheet, TouchableOpacity  } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/common.style'
-import { COLORS } from '../../constants'
+import { COLORS, SIZES } from '../../constants'
 import Input from "../../components/Input";
 import Button from '../../components/Button';
 import { onChange } from 'react-native-reanimated';
@@ -12,35 +12,44 @@ import { useNavigation } from 'expo-router';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ScrollView } from 'react-native-gesture-handler';
 
+var edate='';
+
 const Create = () => {
   const [title,setTitle]=useState('')
   const [desc,setDesc]=useState('')
  const [venue,setVenue]=useState('')
   const dispatch=useDispatch();
   const navigation=useNavigation();
-  const [Daate,setDate]=useState('');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
+  const [disabled,setDisabled]=useState(true);
+  
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
   const onRefresh = React.useCallback(() => {
+    setDesc('');
+    setTitle('');
+    setVenue('');
+    edate=''
+    setDisabled(true)
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
   }, []);
 
-  const formdata=new FormData()
+  
 
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
 
   const handleConfirm = (date) => {
-    console.warn("A date has been picked: ", date);
-    setDate(date);
+    //console.warn("A date has been picked: ", date);
+
+    edate=date;
     hideDatePicker();
   };
   useEffect(() => {
@@ -51,18 +60,20 @@ const Create = () => {
   }, []);
   const { user } = useSelector(state => state.auth)
   const handleCreate=()=>{
-    
-   const  forata={
+    console.log(edate)
+   const  formdata={
       "title":title,
       "description":desc,
       "venue":venue,
+      "date": edate
     }
-    dispatch(addPost(forata))
+    dispatch(addPost(formdata))
     dispatch(loadAllPost())
     navigation.navigate('tabs',{screen:'Posts'})
     setDesc('');
     setTitle('');
-    setVenue('')
+    setVenue('');
+    edate='';
     onRefresh();
   }
   return (
@@ -100,14 +111,26 @@ const Create = () => {
             label="Description"
             placeholder="Tell people more about your event..."
           />
-          
+
+<View style={{marginBottom: 20}}>
+      <Text style={style.label}>Date</Text>
+      <TouchableOpacity onPress={showDatePicker}>
+      <View
+        style={[
+          style.inputContainer,
+          {
+            borderColor:COLORS.black,
+            alignItems: 'center',
+          },
+        ]}><Text>{edate===''?"Select the date for your event":edate.toString()}</Text></View></TouchableOpacity>
+          </View>
         {/* <Button title="Add Date" onPress={showDatePicker} /> */}
-      {/* <DateTimePickerModal
+      <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
-      /> */}
+      />
     <Button title="Host" onPress={()=>{handleCreate()}}  />
 
     
@@ -118,59 +141,23 @@ const Create = () => {
   )
 }
 
-const Input1 = ({user})=>{
-  const dispatch =useDispatch();
-  useEffect(() => {
-    dispatch(loadUser());
-  }, []);
-  
-  const handleCreate=()=>{
-    console.log(title)
-    const formdata={
-      "title":title,
-      "description":desc,
-      "venue":venue,
-      "date":"2023-06-03T21:33:57.870+00:00"
-    }
-    //console.log(formdata)
-    dispatch(addPost(formdata))
-  }
-  
-  return(
-    <View style={{padding: 10}}>
-    <Input 
-            keyboardType="text"
-            value={title}
-            onChange={setTitle}
-            onFocus={() => {}}
-            label="Title"
-            placeholder="Give your event a wonderful title"
-          />
-    <Input
-            keyboardType="text"
-            value={venue}
-            onChange={setVenue}
-            onFocus={()=>{}}
-            label="Venue"
-            placeholder="Tell people where your event will take place"
-          />
-    <Input
-            keyboardType="text"
-            value={desc}
-            onChange={setDesc}
-            onFocus={() => {}}
-            label="Description"
-            placeholder="Tell people more about your event..."
-          />
-          
-
-    <Button title="Host" onPress={()=>{handleCreate()}}  />
-
-    
-  </View>
-);
-};
 
 
+const style = StyleSheet.create({
+  label: {
+    marginVertical: 5,
+    fontSize: 14,
+    color: COLORS.gray,
+    left:13,
+  },
+  inputContainer: {
+    height: 55,
+    backgroundColor: COLORS.light,
+    borderRadius:SIZES.large/0.5,
+    flexDirection: 'row',
+    paddingHorizontal: 15,
+    borderWidth: 0.5,
+  },
+});
 
 export default Create

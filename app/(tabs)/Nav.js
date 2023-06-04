@@ -8,6 +8,7 @@ import Profile from './Profile';
 import { useNavigation } from 'expo-router';
 import { useSelector } from 'react-redux';
 import { useAnimatedGestureHandler } from 'react-native-reanimated';
+import SearchBar from "react-native-dynamic-search-bar";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,10 @@ const Nav = ()=>{
         <Tab.Navigator
        
         initialRouteName="Posts"
+        tabBarOptions={{
+            keyboardHidesTabBar: true
+            
+         }}
                 screenOptions={({route})=>({tabBarIcon:({focused,color,size})=>{
                     
                     color='black';
@@ -42,7 +47,7 @@ const Nav = ()=>{
                     return <Ionicons name={iconName} size={size} color={color}></Ionicons>
                 }})}
         >
-            <Tab.Screen name="Posts" component={Posts} options={{headerShown: false,tabBarLabelStyle:{display:"none"}}}/>
+            <Tab.Screen name="Posts" component={Posts} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
             <Tab.Screen name="Create" component={Create} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
             <Tab.Screen name="Profile" component={Profile} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
         </Tab.Navigator>
