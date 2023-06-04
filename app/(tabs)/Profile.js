@@ -1,10 +1,27 @@
 import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React,{useEffect} from 'react'
 import styles from '../../styles/common.style'
 import { COLORS ,SIZES} from '../../constants'
 import { Image } from 'react-native'
+import Button from '../../components/Button'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, loadUser } from '../../redux/action'
+import { useNavigation } from 'expo-router'
 
 const Profile = () => {
+  const navigation=useNavigation()
+  const dispatch=useDispatch();
+  const logOut=()=>{
+    console.log('logout')
+    dispatch(logout());
+  }
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+  var { user } = useSelector(state => state.auth)
+  if(!user){
+    navigation.navigate('login2')
+    }
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
     <View style={{marginTop:90}}/>
@@ -14,7 +31,7 @@ const Profile = () => {
       source={require('../../assets/images/kemal.jpg')}  
       style={{width: 200, height: 200, borderRadius: 400/ 2}} 
       />
-      <Text style={styles.userName}>Username</Text>
+      <Text style={styles.userName}>{user?user.name:""}</Text>
 
       <View
         style={[
@@ -24,7 +41,7 @@ const Profile = () => {
             alignItems: 'center',
           },
         ]}>
-          <Text>7208229998</Text>
+          <Text>{user?user.phone:""}</Text>
         </View>
 
         <View
@@ -35,7 +52,7 @@ const Profile = () => {
             alignItems: 'center',
           },
         ]}>
-          <Text>Address</Text>
+          <Text>Mumbai</Text>
         </View>
         
         <View
@@ -46,7 +63,7 @@ const Profile = () => {
             alignItems: 'center',
           },
         ]}>
-        <View
+        {/* <View
         style={[
           style.inputContainer,
           {
@@ -63,9 +80,9 @@ const Profile = () => {
             borderColor:COLORS.black,
             alignItems: 'center',
           },
-        ]}><Text>Interest2</Text></View>
+        ]}><Text>Interest2</Text></View> */}
 
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
         <View
         style={[
           style.inputContainer,
@@ -74,11 +91,11 @@ const Profile = () => {
             alignItems: 'center',
           },
         ]}><Text>+</Text></View>
-        </TouchableOpacity>
-          
+        </TouchableOpacity> */}
+        
         </View>
         
-
+        <Button title="Logout" onPress={()=>{logOut()}} />
       
 
       </View>
