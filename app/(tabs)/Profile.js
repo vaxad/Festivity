@@ -39,6 +39,7 @@ const Profile = () => {
           {
             borderColor:COLORS.black,
             alignItems: 'center',
+            padding:20,
           },
         ]}>
           <Text>{user?user.phone:""}</Text>
