@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { Component,useState } from 'react';
 import Input from "../../components/Input";
 import Button from '../../components/Button';
+import styles from '../../styles/common.style';
 const Review = () => {
     const [stars,setStars]=useState(2.5)
   return (
@@ -25,6 +26,7 @@ const Review = () => {
             onFocus={()=>{}}
             label="Comment"
             placeholder="Tell about your experience in this events"
+          
           />
 
     <Button title="Submit" on onPress={()=>{}}/>
@@ -33,5 +35,6 @@ const Review = () => {
     </View>
   )
 }
+
 
 export default Review

@@ -22,7 +22,7 @@ const Input = ({
             borderColor: error
               ? COLORS.white
               : isFocused
-              ? COLORS.white
+              ? COLORS.black
               : COLORS.black,
             alignItems: 'center',
           },
@@ -64,6 +64,7 @@ const style = StyleSheet.create({
     marginVertical: 5,
     fontSize: 14,
     color: COLORS.gray,
+    left:13,
   },
   inputContainer: {
     height: 55,

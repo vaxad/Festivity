@@ -37,9 +37,11 @@ const Profile = () => {
         style={[
           style.inputContainer,
           {
+            width:110,
+            top:10,
             borderColor:COLORS.black,
             alignItems: 'center',
-            padding:20,
+            
           },
         ]}>
           <Text>{user?user.phone:""}</Text>
@@ -47,21 +49,28 @@ const Profile = () => {
 
         <View
         style={[
+          
           style.inputContainer,
           {
+            width:200,
+            top:22,
             borderColor:COLORS.black,
             alignItems: 'center',
           },
         ]}>
-          <Text>Mumbai</Text>
+          <Text>Mumbai, Maharashtra, India.</Text>
         </View>
         
         <View
         style={[
           style.inputContainer,
           {
+            width:340,
+           top:34,
             borderColor:COLORS.black,
             alignItems: 'center',
+            
+            
           },
         ]}>
         {/* <View
@@ -96,7 +105,7 @@ const Profile = () => {
         
         </View>
         
-        <Button title="Logout" onPress={()=>{logOut()}} />
+        <Button title="Log out" onPress={()=>{logOut()}} />
       
 
       </View>
@@ -108,9 +117,15 @@ const style = StyleSheet.create({
     marginVertical: 5,
     fontSize: 14,
     color: COLORS.gray,
+    
   },
+  // Button:{
+  //  width:340,
+  // },
+ 
   inputContainer: {
-    height: 55,
+    
+    height: 50,
     backgroundColor: COLORS.light,
     borderRadius:SIZES.large/0.5,
     flexDirection: 'row',

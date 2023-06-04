@@ -59,7 +59,7 @@ const StackLayout=()=>{
                     headerShadowVisible: false,
                     headerLeft: () => {
                         return(
-                        <View style={{marginLeft:20}}>
+                        <View style={{marginLeft:15}}>
                         <ScreenHeaderBtn iconUrl={icons.menu} dimensions="60%" handlePress={()=>{navigation.navigate('login2')}}/>
                         </View>
                         )
@@ -71,7 +71,7 @@ const StackLayout=()=>{
                         </View>
                         )
                     },
-                    title: "festivity",
+                    title: "Festivity",
           headerTransparent:"true",
           headerTitleAlign: 'center',
           headerTitleStyle:{

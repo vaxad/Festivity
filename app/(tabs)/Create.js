@@ -41,7 +41,7 @@ const Create = () => {
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Host a Party!</Text>
     </View>
-    <View style={{padding: 10}}>
+    <View style={{padding: 20}}>
     <Input 
             keyboardType="text"
             onChangeText={setTitle}
@@ -123,12 +123,13 @@ const Input1 = ({user})=>{
           />
           
 
-    <Button title="Host" onPress={()=>{handleCreate()}}  />
+          <Pressable style={styles.button} onPress={onPress}/>
 
     
   </View>
 );
 };
+
 
 
 

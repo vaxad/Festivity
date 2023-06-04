@@ -47,9 +47,10 @@ const Posts = () => {
         renderItem={({item}) => <Post title={item.title} content={item.description} creator={item.creator} onPress={()=>{navigation.navigate('postClick',{item:item})}}/>}
         keyExtractor={item => item.id}
       />
-        
+         
         
       </View>
+      
       
       </View>
       </ScrollView>
