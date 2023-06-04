@@ -7,9 +7,6 @@ import { useNavigation } from 'expo-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllPost, loadUser } from '../../redux/action'
 
-
-
-
 const Posts = () => {
   const dispatch=useDispatch()
   useEffect(() => {

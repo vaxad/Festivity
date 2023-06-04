@@ -1,5 +1,6 @@
 {
   "expo": {
+    "userInterfaceStyle": "automatic",
     "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
     "scheme": "acme",
     "web": {
