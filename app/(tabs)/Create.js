@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPost, loadAllPost, loadUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 //import DatePicker from 'react-native-date-picker'
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const Create = () => {
   const [title,setTitle]=useState('')
@@ -16,6 +17,24 @@ const Create = () => {
  const [venue,setVenue]=useState('')
   const dispatch=useDispatch();
   const navigation=useNavigation();
+  const [Daate,setDate]=useState('');
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const formdata=new FormData()
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.warn("A date has been picked: ", date);
+    setDate(date);
+    hideDatePicker();
+  };
   useEffect(() => {
     dispatch(loadUser());
     if(!user){
@@ -25,12 +44,11 @@ const Create = () => {
   const { user } = useSelector(state => state.auth)
   const handleCreate=()=>{
     
-    const formdata={
+    formdata.append({
       "title":title,
       "description":desc,
       "venue":venue,
-      "date":"2023-06-03T21:33:57.870+00:00"
-    }
+    })
     dispatch(addPost(formdata))
     dispatch(loadAllPost())
     navigation.navigate('tabs',{screen:'Posts'})
@@ -67,8 +85,14 @@ const Create = () => {
             placeholder="Tell people more about your event..."
           />
           
-
-    <Button title="Host" onPress={()=>{handleCreate()}}  />
+        {/* <Button title="Add Date" onPress={showDatePicker} /> */}
+      {/* <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      /> */}
+    <Button title="Host" onPress={handleCreate}  />
 
     
   </View>

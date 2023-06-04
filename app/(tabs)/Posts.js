@@ -7,9 +7,6 @@ import { useNavigation } from 'expo-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadAllPost, loadUser } from '../../redux/action'
 
-
-
-
 const Posts = () => {
   const dispatch=useDispatch()
   useEffect(() => {
@@ -47,7 +44,6 @@ const Posts = () => {
         renderItem={({item}) => <Post title={item.title} content={item.description} creator={item.creator} onPress={()=>{navigation.navigate('postClick',{item:item})}}/>}
         keyExtractor={item => item.id}
       />
-        
         
       </View>
       
