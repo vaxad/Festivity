@@ -11,6 +11,8 @@ import Login2 from "./login/Login2";
 import Menu from './Screens/Menu';
 import { useNavigation } from 'expo-router';
 import PostClick from './Screens/PostClick';
+import Login from './login/Login';
+import Review from './Screens/Review';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -49,7 +51,7 @@ const StackLayout=()=>{
                     headerRight: () => {
                         return(
                             <View style={{marginRight:20}}>
-                        <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%"  handlePress={()=>{navigation.navigate('login')}}/>
+                        <ScreenHeaderBtn iconUrl={images.profile} dimensions="100%" handlePress={()=>{navigation.navigate('Review')}}/>
                         </View>
                         )
                     },
@@ -74,6 +76,15 @@ const StackLayout=()=>{
                 headerShown: false
               }}/>
               <Stack.Screen
+            name="login"
+            component={Login}
+            options={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false
+              }}/>
+              <Stack.Screen
             name="login2"
             component={Login2}
             options={{
@@ -91,6 +102,15 @@ const StackLayout=()=>{
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerShown: false
               }}/>
+              <Stack.Screen
+              name="Review"
+              component={Review}
+              options={{
+                  gestureEnabled: true,
+                  gestureDirection: "horizontal",
+                  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                  headerShown: false
+                }}/>
         </Stack.Navigator>
     )
 }
