@@ -7,6 +7,7 @@ import Posts from './Posts';
 import Profile from './Profile';
 import { useNavigation } from 'expo-router';
 import { useSelector } from 'react-redux';
+import { useAnimatedGestureHandler } from 'react-native-reanimated';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,6 +20,7 @@ const Nav = ()=>{
        
         initialRouteName="Posts"
                 screenOptions={({route})=>({tabBarIcon:({focused,color,size})=>{
+                    
                     color='black';
                     let iconName;
                     let routeName=route.name;
