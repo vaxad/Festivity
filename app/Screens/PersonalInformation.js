@@ -5,10 +5,14 @@ import Input from '../../components/Input';
 
 const YourComponent = () => {
   const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
+
 
   const handleGenderSelect = (value) => {
     setSelectedGender(value);
+    
   };
+  
 
   return (
     <View>
@@ -24,9 +28,15 @@ const YourComponent = () => {
             label="Address"
             placeholder="Enter your address"
           />
+          
+          
       </ScrollView>
     </View>
-  );
+
+
+    
+  
+    );
 };
 
 export default YourComponent;
