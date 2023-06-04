@@ -14,6 +14,7 @@ import PostClick from './Screens/PostClick';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../redux/action';
 import Review from './Screens/Review';
+import PersonalInformation from './Screens/PersonalInformation';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -111,7 +112,7 @@ const StackLayout=()=>{
               }}/>
               <Stack.Screen
               name="Review"
-              component={Review}
+              component={PersonalInformation}
               options={{
                   gestureEnabled: true,
                   gestureDirection: "horizontal",
