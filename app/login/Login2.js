@@ -8,19 +8,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadUser, register } from "../../redux/action";
 import styles from "../../styles/common.style";
 import { useNavigation } from "expo-router";
+import {FirebaseRecaptchaVerifierModal} from 'expo-firebase-recaptcha';
+import {firebaseConfig} from '../../config';
+import firebase from 'firebase/compat/app';
 
 
 const Login2 = () => {
   
   const dispatch=useDispatch();
   const [name,setName]=useState('')
-  const [phone,setPhone]=useState('')
+  const [phoneNumber,setPhoneNumber]=useState('')
   const [code,setCode]=useState('')
   const [loading,setLoading]=useState(false);
-  const [verificationId, setVerificationId] = useState(null);
+  const [verificationdId, setVerificationId] = useState(null);
   const [disabled,setDisabled]=useState(false)
   const navigation=useNavigation();
   const { user } = useSelector(state => state.auth)
+  
+  const recaptchaVerifier = useRef(null);
   
   useEffect(() => {
     dispatch(loadUser());
@@ -36,7 +41,7 @@ const Login2 = () => {
     console.log('reg')
     const formdata={
       "name":name,
-      "phone":phone
+      "phone":phoneNumber
     }
     console.log(formdata)
     try {
@@ -45,8 +50,38 @@ const Login2 = () => {
     } catch (e) {
       console.log(e)
     }
+    
+    setPhoneNumber('');
+    setCode('');
+    setDisabled(false);
+    setName('');
   }
 
+
+  const sendVerification = ()=>{
+    setDisabled(true)
+    const phoneProvider = new firebase.auth.PhoneAuthProvider();
+    phoneProvider
+    .verifyPhoneNumber('+91'+phoneNumber,recaptchaVerifier.current)
+    .then(setVerificationId);
+  };
+
+  const confirmCode=() => {
+    const credential = firebase.auth.PhoneAuthProvider.credential(
+        verificationdId,
+        code
+    );
+    firebase.auth().signInWithCredential(credential)
+    .then(() => {
+        handleSubmit();
+    })
+    .catch((error) => {
+        //show an alert in case of error  
+        Alert.alert(
+            'Error',
+        );
+        }
+     )}
 
   const validate = () => {
     //Keyboard.dismiss();
@@ -76,6 +111,10 @@ const Login2 = () => {
         </Text>
 
         <View style={{ marginVertical: 20 }}>
+        <FirebaseRecaptchaVerifierModal
+        ref={recaptchaVerifier}
+        firebaseConfig= {firebaseConfig}
+        />
 
         <Input
             keyboardType="Text"
@@ -90,15 +129,24 @@ const Login2 = () => {
 
           <Input
             keyboardType="numeric"
-            onChangeText={setPhone}
-            value={phone}
+            onChangeText={setPhoneNumber}
+            value={phoneNumber}
             iconName="phone-outline"
             label="Phone Number"
             placeholder="Enter your phone no"
             //error={errors.phone}
           />
-          <Button title="Be festive" onPress={()=>{validate()}}  
+          <Button title="Be festive" onPress={sendVerification}  
             disabled={disabled}/>
+             <Input
+            onChangeText={setCode}
+            value={code}
+            iconName="lock-outline"
+            keyboardType="numeric"
+            label="OTP"
+            placeholder="Enter OTP"
+          />
+          <Button title="Verify OTP" onPress={confirmCode} disabled={!disabled}  />
           
         </View>
       </ScrollView>

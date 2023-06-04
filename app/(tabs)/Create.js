@@ -6,7 +6,7 @@ import Input from "../../components/Input";
 import Button from '../../components/Button';
 import { onChange } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPost, loadUser } from '../../redux/action';
+import { addPost, loadAllPost, loadUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 //import DatePicker from 'react-native-date-picker'
 
@@ -32,6 +32,8 @@ const Create = () => {
       "date":"2023-06-03T21:33:57.870+00:00"
     }
     dispatch(addPost(formdata))
+    dispatch(loadAllPost())
+    navigation.navigate('tabs',{screen:'Posts'})
   }
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>

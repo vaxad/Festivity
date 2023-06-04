@@ -34,7 +34,7 @@ const Otp = () => {
     .catch((error) => {
         //show an alert in case of error  
         Alert.alert(
-            'Login Successful. Welcome to  Dashboard',
+            'Error',
         );
         }
      )}

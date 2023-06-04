@@ -13,6 +13,7 @@ import { useNavigation } from 'expo-router';
 import PostClick from './Screens/PostClick';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../redux/action';
+import Review from './Screens/Review';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();

@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 //
   container: {
-    marginTop:SIZES.xLarge,
+    marginTop:SIZES.small,
     marginHorizontal:SIZES.large,
     paddingHorizontal:SIZES.small,
     width: "100%",
