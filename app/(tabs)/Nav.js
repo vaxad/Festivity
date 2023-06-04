@@ -5,10 +5,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Create from './Create';
 import Posts from './Posts';
 import Profile from './Profile';
+import { useNavigation } from 'expo-router';
+import { useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 const Nav = ()=>{
+    const { user } = useSelector(state => state.auth)
+    const navigation=useNavigation();
+    
     return(
         <Tab.Navigator
        

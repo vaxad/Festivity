@@ -3,18 +3,19 @@ import React from 'react'
 import Button from '../../components/Button'
 import { COLORS,FONT,SIZES } from '../../constants'
 
-const PostClick = () => {
+const PostClick = ({ route, navigation }) => {
+  const { item} = route.params;
   return (
     <View>
       <Image 
       source={require('../../assets/images/kemal.jpg')}
       />
-      <Text>Title</Text>
-      <Text>Venue</Text>
-      <Text>Date,Time</Text>
+      <Text>{item.title}</Text>
+      <Text>{item.description}</Text>
+      <Text>{item.venue}</Text>
 
-      <Text>More Information</Text>
-      <Text>Venue</Text>
+      <Text>{item.date}</Text>
+      <Text>{item.likes}</Text>
         
 
       <Button>

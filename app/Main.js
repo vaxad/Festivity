@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import {COLORS, icons, images, SIZES, FONT} from "../constants"
 import { ScreenHeaderBtn } from "../components"
 import { useFonts } from "expo-font";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
 import Nav from "./(tabs)/Nav";
@@ -11,11 +11,19 @@ import Login2 from "./login/Login2";
 import Menu from './Screens/Menu';
 import { useNavigation } from 'expo-router';
 import PostClick from './Screens/PostClick';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUser } from '../redux/action';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
  const Stack=createStackNavigator();
 const StackLayout=()=>{
+    const dispatch=useDispatch();
+    const navigation=useNavigation();
+    useEffect(() => {
+        dispatch(loadUser());
+      }, []);
+      var { user } = useSelector(state => state.auth)
     const [fontsLoaded]=useFonts({
         DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
         DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),
@@ -26,13 +34,22 @@ const StackLayout=()=>{
             await SplashScreen.hideAsync();
         }
     },[fontsLoaded])
-    const navigation=useNavigation();
     if(!fontsLoaded){
         return null;
     }
+    
+
     return(
         <Stack.Navigator>
-            {/*  <Stack.Screen name="login" component={Login} options={{headerShown:false}}/> */}
+           <Stack.Screen
+            name="login2"
+            component={Login2}
+            options={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false
+              }}/>
             <Stack.Screen
             name="tabs"
             component={Nav}
@@ -73,7 +90,7 @@ const StackLayout=()=>{
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerShown: false
               }}/>
-              <Stack.Screen
+              {/* <Stack.Screen
             name="login2"
             component={Login2}
             options={{
@@ -81,7 +98,7 @@ const StackLayout=()=>{
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerShown: false
-              }}/>
+              }}/> */}
               <Stack.Screen
             name="postClick"
             component={PostClick}

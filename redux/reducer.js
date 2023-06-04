@@ -66,10 +66,26 @@ export const authReducer = createReducer(
       ////('load')
       state.loading = false;
       state.isAuthenticated = true;
-      state.user = action.payload.user;
+      state.userFocus = action.payload.user;
       ////(action.payload);
     },
     getUserFailure: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.error = action.payload.data;
+    },
+
+    getPostFocusRequest: (state) => {
+      state.loading = true;
+    },
+    getPostFocusSuccess: (state, action) => {
+      ////('load')
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.postFocus = action.payload.user;
+      ////(action.payload);
+    },
+    getPostFocusFailure: (state, action) => {
       state.loading = false;
       state.isAuthenticated = false;
       state.error = action.payload.data;
@@ -172,8 +188,10 @@ export const authReducer = createReducer(
       state.loading = true;
     },
     addPostSuccess: (state, action) => {
+      console.log("add")
       state.loading = false;
-      state.message = action.payload.data;
+      state.message = action.payload.data.message;
+
     },
     addPostFailure: (state, action) => {
       state.loading = false;

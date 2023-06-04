@@ -34,6 +34,19 @@ export const getUser = (userId) => async (dispatch) => {
   }
 };
 
+export const getPostFocus = (postId) => async (dispatch) => {
+  ////('hii');
+  try {
+    dispatch({ type: "getPostFocusRequest" });
+
+    const res = await axios.get(`${serverUrl}/post/${postId}`);
+    //(res.data);
+    dispatch({ type: "getPostFocusSuccess", payload: res.data });
+  } catch (error) {
+    dispatch({ type: "getPostFocusFailure", payload: error.response.data.message });
+  }
+};
+
 export const loadUser = () => async (dispatch) => {
   ////('hii');
   try {
@@ -90,10 +103,11 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 export const addPost = (formData) => async (dispatch) => {
+  console.log(formData)
   try {
-    dispatch({ type: "addPostRequest" });
-
-    const { data } = await axios.post(
+    //dispatch({ type: "addPostRequest" });
+    console.log(formData)
+    const res=await axios.post(
       `${serverUrl}/newpost`,formData,
       {
         headers: {
@@ -101,9 +115,10 @@ export const addPost = (formData) => async (dispatch) => {
         },
       }
     );
-    dispatch({ type: "addPostSuccess", payload: data.message });
+    //console.log(res)
+    dispatch({ type: "addPostSuccess", payload: res });
   } catch (error) {
-    dispatch({ type: "addPostFailure", payload: error.response.data.message });
+    dispatch({ type: "addPostFailure", payload: error.response.res.message });
   }
 };
 
@@ -196,13 +211,14 @@ export const updatePost = (formData) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
+  console.log('logout')
   try {
     dispatch({ type: "logoutRequest" });
     //("logout")
     await axios.get(`${serverUrl}/logout`);
     dispatch({ type: "logoutSuccess" });
-    loadUser()
-    loadPost()
+    loadUser();
+    console.log('logout')
   } catch (error) {
     dispatch({
       type: "logoutFailure",
