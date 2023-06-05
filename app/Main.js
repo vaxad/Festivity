@@ -47,7 +47,7 @@ const StackLayout=()=>{
 
     return(
         <Stack.Navigator>
-           <Stack.Screen
+           {!user&&<Stack.Screen
             name="login2"
             component={Login2}
             options={{
@@ -55,7 +55,7 @@ const StackLayout=()=>{
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
                 headerShown: false
-              }}/>
+              }}/>}
             <Stack.Screen
             name="tabs"
             component={Nav}

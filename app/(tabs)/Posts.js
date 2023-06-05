@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView, ScrollView, FlatList,RefreshControl } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, FlatList,RefreshControl, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/common.style'
-import { COLORS } from '../../constants'
+import { COLORS, FONT, SIZES } from '../../constants'
 import Post from '../../components/Post'
 import { useNavigation } from 'expo-router'
 import { useDispatch, useSelector } from 'react-redux'
@@ -118,32 +118,49 @@ const Posts = () => {
                     onChangeText={(text) => text?searchFilterFunction(text):setFilteredData(DATA)}
                   />
                   </View>
-      <ScrollView refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
-      <View style={styles.container}>
+      
+      <View style={style.container}>
         
-      <Text style={styles.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
+      <Text style={style.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
       {/* <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text> */}
-      <View>
+      <View style={{flex:1}}>
         
         <FlatList
+        contentContainerStyle={{ paddingBottom: 20 }}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         onViewableItemsChanged={imagepick()}
         data={etext?filteredData:DATA}
         renderItem={({item}) => <Post title={item.title} content={item.description} creator={item.creator} onPress={()=>{navigation.navigate('postClick',{item:item})}}/>}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
       />
          
-        
       </View>
-      
-      
       </View>
-      </ScrollView>
     </SafeAreaView>
   )
 }
+
+const style=StyleSheet.create(
+  {
+    container: {
+      flex:1,
+      marginTop:SIZES.small,
+      marginHorizontal:SIZES.large,
+      paddingHorizontal:SIZES.small,
+      width: "100%",
+      
+    },
+    welcomeMessage: {
+      shadowColor:COLORS.gray,
+      fontFamily: FONT.bold,
+      fontSize: SIZES.xLarge,
+      color: COLORS.primary,
+      marginBottom:2,
+      marginTop: 2,
+    },
+  }
+)
 
 
 

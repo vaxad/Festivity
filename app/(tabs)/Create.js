@@ -89,7 +89,7 @@ const Create = () => {
     </View>
     <View style={{padding: 10}}>
     <Input 
-            keyboardType="text"
+            keyboardType="default"
             onChangeText={setTitle}
             value={title}
             onFocus={() => {}}
@@ -97,7 +97,7 @@ const Create = () => {
             placeholder="Give your event a wonderful title"
           />
     <Input
-            keyboardType="text"
+            keyboardType="default"
             onChangeText={setVenue}
             value={venue}
             onFocus={()=>{}}
@@ -105,7 +105,7 @@ const Create = () => {
             placeholder="Tell people where your event will take place"
           />
     <Input
-            keyboardType="text"
+            keyboardType="default"
             onChangeText={setDesc}
             value={desc}
             onFocus={() => {}}

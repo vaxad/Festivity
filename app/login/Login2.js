@@ -30,14 +30,14 @@ const Login2 = () => {
   
   useEffect(() => {
     dispatch(loadUser(token));
-    if(user){
+    if(user||token){
       navigation.navigate('tabs')
       }
   }, []);
   
-  if(user){
-    navigation.navigate('tabs')
-    }
+  // if(user){
+  //   navigation.navigate('tabs')
+  //   }
   const handleSubmit=()=>{
     console.log('reg')
     const formdata={
@@ -48,6 +48,7 @@ const Login2 = () => {
     try {
       
       dispatch(register(formdata,token))
+      navigation.navigate('tabs')
     } catch (e) {
       console.log(e)
     }
@@ -118,7 +119,7 @@ const Login2 = () => {
         />
 
         <Input
-            keyboardType="Text"
+            keyboardType="default"
             onChangeText={setName}
             value={name}
             onFocus={() => {}}
