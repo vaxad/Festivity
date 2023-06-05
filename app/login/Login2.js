@@ -15,6 +15,7 @@ import firebase from 'firebase/compat/app';
 
 const Login2 = () => {
   
+  const { token } = useSelector(state => state.auth)
   const dispatch=useDispatch();
   const [name,setName]=useState('')
   const [phoneNumber,setPhoneNumber]=useState('')
@@ -28,7 +29,7 @@ const Login2 = () => {
   const recaptchaVerifier = useRef(null);
   
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadUser(token));
     if(user){
       navigation.navigate('tabs')
       }
@@ -46,7 +47,7 @@ const Login2 = () => {
     console.log(formdata)
     try {
       
-      dispatch(register(formdata))
+      dispatch(register(formdata,token))
     } catch (e) {
       console.log(e)
     }

@@ -2,13 +2,68 @@
 import React from 'react'
 import { Text, TouchableOpacity, StyleSheet, ImageBackground, View } from 'react-native';
 import { COLORS, FONT, SIZES } from '../constants';
+import i1 from '../assets/images/1.jpg'
+import i2 from '../assets/images/2.jpg'
+import i0 from '../assets/images/0.jpg'
+import i3 from '../assets/images/3.jpg'
+import i4 from '../assets/images/4.jpg'
+import i5 from '../assets/images/5.jpg'
+import i6 from '../assets/images/6.jpg'
+import i7 from '../assets/images/7.jpg'
+import i8 from '../assets/images/8.jpg'
 
+var ctr=0;
+var rev=0;
+var img=i0;
 const Post = ({ title, content, onPress }) => {
+  const imagepick=()=>{
+    if(ctr==8){
+      rev=1;
+    }
+    if(ctr==0){
+      rev=0;
+    }
+    if(rev==0){
+      ctr=ctr+1
+    }else{
+      ctr=ctr-1
+    }
+    switch(ctr){
+      case 0:
+        return i0;
+        break;
+        case 1:
+        return i1;
+        break;
+        case 2:
+        return i2;
+        break;
+        case 3:
+        return i3;
+        break;
+        case 4:
+        return i4;
+        break;
+        case 5:
+        return i5;
+        break;
+        case 6:
+        return i6;
+        break;
+        case 7:
+        return i7;
+        break;
+        case 8:
+        return i8;
+        break;
+        
+    }
+  }
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.buttonContainer} onPress={() => onPress()}>
         <ImageBackground
-          source={require('../assets/images/holi.jpg')} // Replace with the path to your image
+          source={imagepick()} // Replace with the path to your image
           style={styles.buttonImage}
           borderRadius={20}
 
@@ -82,7 +137,7 @@ const styles = StyleSheet.create({
   },
   buttonImage: {
     
-
+    
     // left:-18,
     width: 328,
     height: 206,

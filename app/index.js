@@ -86,6 +86,7 @@ export default function App() {
     //     />
     //   ) : (
       <Provider store={store}>
+        
         <StackLayout/>
         </Provider>
     //   )}

@@ -33,6 +33,8 @@ export const authReducer = createReducer(
       state.isAuthenticated = true;
       state.user = action.payload.data.user;
       console.log(state.user);
+      state.token=action.payload.data.token;
+      console.log(state.token)
       //a.setState('hii')
       state.message = action.payload.data.message;
 
@@ -50,6 +52,7 @@ export const authReducer = createReducer(
       ////('load')
       state.loading = false;
       state.isAuthenticated = true;
+      state.res=true;
       state.user = action.payload.user;
       ////(action.payload);
     },

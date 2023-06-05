@@ -22,11 +22,14 @@ SplashScreen.preventAutoHideAsync();
  const Stack=createStackNavigator();
 const StackLayout=()=>{
     const dispatch=useDispatch();
+    
+  const { token } = useSelector(state => state.auth)
     const navigation=useNavigation();
     useEffect(() => {
-        dispatch(loadUser());
+        dispatch(loadUser(token));
       }, []);
       var { user } = useSelector(state => state.auth)
+      
     const [fontsLoaded]=useFonts({
         DMBold: require('../assets/fonts/DMSans-Bold.ttf'),
         DMMedium: require('../assets/fonts/DMSans-Medium.ttf'),

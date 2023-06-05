@@ -23,6 +23,7 @@ const Create = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
   const [disabled,setDisabled]=useState(true);
+  const { token } = useSelector(state => state.auth)
   
 
   const showDatePicker = () => {
@@ -53,7 +54,7 @@ const Create = () => {
     hideDatePicker();
   };
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadUser(token));
     if(!user){
       navigation.navigate('login2')
     }
@@ -67,8 +68,8 @@ const Create = () => {
       "venue":venue,
       "date": edate
     }
-    dispatch(addPost(formdata))
-    dispatch(loadAllPost())
+    dispatch(addPost(formdata,token))
+    dispatch(loadAllPost(token))
     navigation.navigate('tabs',{screen:'Posts'})
     setDesc('');
     setTitle('');

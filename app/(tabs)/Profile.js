@@ -7,8 +7,11 @@ import Button from '../../components/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, loadUser } from '../../redux/action'
 import { useNavigation } from 'expo-router'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const Profile = () => {
+  
+  const { token } = useSelector(state => state.auth)
   const navigation=useNavigation()
   const dispatch=useDispatch();
   const logOut=()=>{
@@ -16,7 +19,7 @@ const Profile = () => {
     dispatch(logout());
   }
   useEffect(() => {
-    dispatch(loadUser());
+    dispatch(loadUser(token));
   }, []);
   var { user } = useSelector(state => state.auth)
   if(!user){
@@ -25,6 +28,7 @@ const Profile = () => {
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
     <View style={{marginTop:90}}/>
+    <ScrollView>
       <View style={styles.container}>
       <Text style={styles.welcomeMessage}>Profile</Text>
       <Image 
@@ -109,8 +113,9 @@ const Profile = () => {
         
         <Button title="Log out" onPress={()=>{logOut()}} />
       
-
+        
       </View>
+      </ScrollView>
     </SafeAreaView>
   )
 } 

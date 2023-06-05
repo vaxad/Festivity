@@ -4,6 +4,7 @@ import Button from '../../components/Button'
 import { COLORS,FONT,SIZES } from '../../constants'
 
 const PostClick = ({ route, navigation }) => {
+  
   const { item} = route.params;
   return (
     <View>

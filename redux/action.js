@@ -21,12 +21,16 @@ export const login = (phone) => async (dispatch) => {
   }
 };
 
-export const getUser = (userId) => async (dispatch) => {
+export const getUser = (userId,token) => async (dispatch) => {
   ////('hii');
   try {
     dispatch({ type: "getUserRequest" });
 
-    const res = await axios.get(`${serverUrl}/user/${userId}`);
+    const res = await axios.get(`${serverUrl}/user/${userId}`,{
+      headers:{
+        'token':token
+      }
+    });
     //(res.data);
     dispatch({ type: "getUserSuccess", payload: res.data });
   } catch (error) {
@@ -34,12 +38,16 @@ export const getUser = (userId) => async (dispatch) => {
   }
 };
 
-export const getPostFocus = (postId) => async (dispatch) => {
+export const getPostFocus = (postId, token) => async (dispatch) => {
   ////('hii');
   try {
     dispatch({ type: "getPostFocusRequest" });
 
-    const res = await axios.get(`${serverUrl}/post/${postId}`);
+    const res = await axios.get(`${serverUrl}/post/${postId}`,{
+      headers:{
+        'token':token
+      }
+    });
     //(res.data);
     dispatch({ type: "getPostFocusSuccess", payload: res.data });
   } catch (error) {
@@ -47,12 +55,16 @@ export const getPostFocus = (postId) => async (dispatch) => {
   }
 };
 
-export const loadUser = () => async (dispatch) => {
+export const loadUser = (token) => async (dispatch) => {
   ////('hii');
   try {
     dispatch({ type: "loadUserRequest" });
 
-    const res = await axios.get(`${serverUrl}/me`);
+    const res = await axios.get(`${serverUrl}/me`,{
+      headers:{
+        'token':token
+      }
+    });
     //(res.data);
     dispatch({ type: "loadUserSuccess", payload: res.data });
   } catch (error) {
@@ -60,12 +72,16 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const loadPost = (id) => async (dispatch) => {
+export const loadPost = (token) => async (dispatch) => {
   //('hiiload '+id);
   try {
     dispatch({ type: "loadPostRequest" });
 
-    const res = await axios.get(`${serverUrl}/getpost`);
+    const res = await axios.get(`${serverUrl}/getpost`,{
+      headers:{
+        'token':token
+      }
+    });
     ////(res);
     loadUser();
     dispatch({ type: "loadPostSuccess", payload: res.data });
@@ -74,12 +90,17 @@ export const loadPost = (id) => async (dispatch) => {
   }
 };
 
-export const loadAllPost = (id) => async (dispatch) => {
+export const loadAllPost = (token) => async (dispatch) => {
   //('hiiload '+id);
+  console.log(token)
   try {
     dispatch({ type: "loadAllPostRequest" });
 
-    const res = await axios.get(`${serverUrl}/getallpost`);
+    const res = await axios.get(`${serverUrl}/getallpost`,{
+      headers:{
+        'token':token
+      }
+    });
     ////(res);
     loadUser();
     dispatch({ type: "loadAllPostSuccess", payload: res.data });
@@ -88,12 +109,16 @@ export const loadAllPost = (id) => async (dispatch) => {
   }
 };
 
-export const deletePost = (id) => async (dispatch) => {
+export const deletePost = (id,token) => async (dispatch) => {
   ////('hiiload '+id);
   try {
     dispatch({ type: "deletePostRequest" });
 
-    const res = await axios.delete(`${serverUrl}/post/${id}`);
+    const res = await axios.delete(`${serverUrl}/post/${id}`,{
+      headers:{
+        'token':token
+      }
+    });
     ////(res);
     loadUser();
     dispatch({ type: "deletePostSuccess", payload: res.data });
@@ -102,7 +127,7 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
-export const addPost = (formData) => async (dispatch) => {
+export const addPost = (formData,token) => async (dispatch) => {
   console.log(formData)
   try {
     //dispatch({ type: "addPostRequest" });
@@ -112,6 +137,7 @@ export const addPost = (formData) => async (dispatch) => {
       {
         headers: {
           "Content-Type": "application/json",
+          'token':token
         },
       }
     );
@@ -122,7 +148,7 @@ export const addPost = (formData) => async (dispatch) => {
   }
 };
 
-export const addReview = (formData, userId) => async (dispatch) => {
+export const addReview = (formData, userId, token) => async (dispatch) => {
   try {
     dispatch({ type: "addReviewRequest" });
 
@@ -131,6 +157,7 @@ export const addReview = (formData, userId) => async (dispatch) => {
       {
         headers: {
           "Content-Type": "application/json",
+          'token':token
         },
       }
     );
@@ -192,13 +219,14 @@ export const addname = (formData) => async (dispatch) => {
 };
 
 
-export const updatePost = (formData) => async (dispatch) => {
+export const updatePost = (formData,token) => async (dispatch) => {
   try {
     dispatch({ type: "updatePostRequest" });
 
     const { data } = await axios.put(`${serverUrl}/updateprofile`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        'token':token
       },
     });
     dispatch({ type: "updatePostSuccess", payload: data.message });
