@@ -33,7 +33,7 @@ const Profile = () => {
       <Text style={styles.welcomeMessage}>Profile</Text>
       <Image 
       source={require('../../assets/images/kemal.jpg')}  
-      style={{width: 200, height: 200, borderRadius: 400/ 2}} 
+      style={{width: 200, height: 200, borderRadius: 400/ 2,alignSelf: 'center'}} 
       />
       <Text style={styles.userName}>{user?user.name:""}</Text>
 

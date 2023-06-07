@@ -6,10 +6,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "react-native-animated-spinkit": ">= 1.5.0",
-    "@freakycoder/react-native-bounceable": ">= 0.2.2",
     "@firebase/app-compat": "^0.2.11",
-    "@react-native-async-storage/async-storage": "1.17.11",
+    "@freakycoder/react-native-bounceable": ">= 0.2.2",
+    "@react-native-async-storage/async-storage": "^1.18.2",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-firebase/app": "^17.5.0",
     "@react-native-firebase/auth": "^17.5.0",
@@ -32,6 +31,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
+    "react-native-animated-spinkit": "^1.5.2",
+    "react-native-async-storage": "^0.0.1",
     "react-native-date-picker": "^4.2.13",
     "react-native-dynamic-search-bar": "github:WrathChaos/react-native-dynamic-search-bar#expo",
     "react-native-gesture-handler": "~2.9.0",
