@@ -9,15 +9,11 @@ import { logout, loadUser } from '../../redux/action'
 import { useNavigation } from 'expo-router'
 import { ScrollView } from 'react-native-gesture-handler'
 
-const Profile = () => {
-  
-  const { token } = useSelector(state => state.auth)
+
+const ProfilePeople = () => {
+    const { token } = useSelector(state => state.auth)
   const navigation=useNavigation()
   const dispatch=useDispatch();
-  const logOut=()=>{
-    console.log('logout')
-    dispatch(logout());
-  }
   useEffect(() => {
     dispatch(loadUser(token));
   }, []);
@@ -111,7 +107,21 @@ const Profile = () => {
         
         </View>
         
-        <Button title="Log out" onPress={()=>{logOut()}} />
+        <View style={{ flexDirection: 'row' }}>
+      <TouchableOpacity
+        style={{ flex: 1, backgroundColor: 'black', margin: 10, padding: 10 }}
+        onPress={() => console.log('Touchable 1 pressed')}
+      >
+        <Text style={{ color: 'white', textAlign: 'center' }}>Review</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={{ flex: 1, backgroundColor: 'black', margin: 10, padding: 10}}
+        onPress={() => console.log('Touchable 2 pressed')}
+      >
+        <Text style={{ color: 'white', textAlign: 'center' }}>Posts</Text>
+      </TouchableOpacity>
+    </View>
       
         
       </View>
@@ -141,4 +151,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default Profile
+export default ProfilePeople

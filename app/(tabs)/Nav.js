@@ -9,6 +9,8 @@ import { useNavigation } from 'expo-router';
 import { useSelector } from 'react-redux';
 import { useAnimatedGestureHandler } from 'react-native-reanimated';
 import SearchBar from "react-native-dynamic-search-bar";
+import ProfilePeople from '../Screens/ProfilePeople';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -49,7 +51,7 @@ const Nav = ()=>{
         >
             <Tab.Screen name="Posts" component={Posts} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
             <Tab.Screen name="Create" component={Create} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
-            <Tab.Screen name="Profile" component={Profile} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
+            <Tab.Screen name="Profile" component={ProfilePeople} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
         </Tab.Navigator>
     )
 }
