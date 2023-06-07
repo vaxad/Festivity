@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity ,textAlign} from 'react-native'
 import React,{useEffect} from 'react'
 import styles from '../../styles/common.style'
 import { COLORS ,SIZES} from '../../constants'
