@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, BackHandler } from 'react-native'
 import React,{useEffect} from 'react'
 import styles from '../../styles/common.style'
 import { COLORS ,SIZES} from '../../constants'
@@ -16,7 +16,13 @@ const Profile = () => {
   const dispatch=useDispatch();
   const logOut=()=>{
     console.log('logout')
-    dispatch(logout());
+    try {
+      AsyncStorage.setItem('token', null)
+   } catch (e) {
+     console.log(e);
+   }
+   dispatch(logout());
+   // BackHandler.exitApp();
   }
   useEffect(() => {
     dispatch(loadUser(token));

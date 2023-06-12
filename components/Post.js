@@ -62,6 +62,7 @@ const Post = ({ title, content, onPress }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.buttonContainer} onPress={() => onPress()}>
+        
         <ImageBackground
           source={imagepick()} // Replace with the path to your image
           style={styles.buttonImage}
@@ -69,6 +70,7 @@ const Post = ({ title, content, onPress }) => {
 
 
         >
+        <View style={styles.overlay} borderRadius={20} />
           <Text style={styles.buttonText}>{title}</Text>
           <Text style={styles.buttonsText} numberOfLines={3}>{content}</Text>
         </ImageBackground>
@@ -96,8 +98,11 @@ const Post = ({ title, content, onPress }) => {
 
 
 const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  },
   container: {
-    
     flex: 1,
     padding: 12,
     justifyContent: 'center',
@@ -125,6 +130,11 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+
+    
+    right: 16,
+    top: 0,
+    paddingLeft: 10,
     
     // width: 400,
     // height: 200,
@@ -137,7 +147,6 @@ const styles = StyleSheet.create({
   },
   buttonImage: {
     
-    
     // left:-18,
     width: 328,
     height: 206,
@@ -145,9 +154,6 @@ const styles = StyleSheet.create({
     top: 0,
     paddingTop: 130,
     paddingLeft: 10,
-
-
-
   },
 
 

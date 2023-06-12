@@ -4,13 +4,14 @@ import styles from '../../styles/common.style'
 import { COLORS, SIZES } from '../../constants'
 import Input from "../../components/Input";
 import Button from '../../components/Button';
-import { onChange } from 'react-native-reanimated';
+//import { onChange } from 'react-native-reanimated';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPost, loadAllPost, loadUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 //import DatePicker from 'react-native-date-picker'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 var edate='';
 
@@ -23,8 +24,7 @@ const Create = () => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
   const [disabled,setDisabled]=useState(true);
-  const { token } = useSelector(state => state.auth)
-  
+  const token = AsyncStorage.getItem('token')
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);

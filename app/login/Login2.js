@@ -1,4 +1,4 @@
-import { View, SafeAreaView, ScrollView, Text } from "react-native";
+import { View, SafeAreaView, ScrollView, Text, BackHandler } from "react-native";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Loader from "../../components/Loader";
@@ -29,9 +29,15 @@ const Login2 = () => {
   const recaptchaVerifier = useRef(null);
   
   useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress",()=>{
+      BackHandler.exitApp();
+    });
+    navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+    })
     dispatch(loadUser(token));
     if(user||token){
-      navigation.navigate('tabs')
+      navigation.navigate('tabs',{screen:'Posts'})
       }
   }, []);
   
@@ -48,7 +54,8 @@ const Login2 = () => {
     try {
       
       dispatch(register(formdata,token))
-      navigation.navigate('tabs')
+      // navigation.replace('tabs',{screen:'Posts'})
+      navigation.replace('Splash')
     } catch (e) {
       console.log(e)
     }

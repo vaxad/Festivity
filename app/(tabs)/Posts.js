@@ -16,6 +16,8 @@ import i5 from '../../assets/images/5.jpg'
 import i6 from '../../assets/images/6.jpg'
 import i7 from '../../assets/images/7.jpg'
 import i8 from '../../assets/images/8.jpg'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Preference from '../../components/Preference'
 
 
 var etext='';
@@ -23,6 +25,22 @@ var ctr=0;
 var rev=0;
 var img=i0;
 const Posts = () => {
+  
+  const { token } = useSelector(state => state.auth)
+  if(token){
+    try {
+      AsyncStorage.setItem('token', action.payload.data.token)
+   } catch (e) {
+     console.log(e);
+   }
+  }else{
+    try {
+      AsyncStorage.getItem('token')
+   } catch (e) {
+     console.log(e);
+   }
+  }
+  console.log(token);
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(loadUser(token));
@@ -33,13 +51,12 @@ const Posts = () => {
   const DATA=allPosts?allPosts:null
   const [filteredData, setFilteredData] =useState(DATA);
   
-  const { token } = useSelector(state => state.auth)
 
   const searchFilterFunction = (text) => {
     etext=text;
     if(text){  
         const newData = allPosts.filter(item => {
-            const itemData = item.description ? item.description.toUpperCase() : ''.toUpperCase();
+            const itemData = item.description||item.title ? item.description.concat(item.title,item.venue).toUpperCase() : ''.toUpperCase();
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
         })
@@ -115,6 +132,7 @@ const Posts = () => {
                     style={{borderRadius:20}}           
                     darkMode={true}
                     onPress={() => {}}
+                    onClearPress={()=>{setFilteredData(DATA); ke}}
                     onChangeText={(text) => text?searchFilterFunction(text):setFilteredData(DATA)}
                   />
                   </View>
@@ -124,6 +142,11 @@ const Posts = () => {
       <Text style={style.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
       {/* <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text> */}
+      <View style={{flexDirection:'row'}}>
+      <Preference title="Dadar" onPress={()=>{searchFilterFunction("Dadar")}}></Preference>
+      <Preference title="Borivali" onPress={()=>{searchFilterFunction("Borivali")}}></Preference>
+      <Preference title="Any" onPress={()=>{searchFilterFunction("")}}></Preference>
+      </View>
       <View style={{flex:1}}>
         
         <FlatList
@@ -133,7 +156,7 @@ const Posts = () => {
         data={etext?filteredData:DATA}
         renderItem={({item}) => <Post title={item.title} content={item.description} creator={item.creator} onPress={()=>{navigation.navigate('postClick',{item:item})}}/>}
         keyExtractor={item => item._id}
-      />
+      ></FlatList>
          
       </View>
       </View>

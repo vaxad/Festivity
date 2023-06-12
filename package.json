@@ -8,7 +8,11 @@
   "dependencies": {
     "@firebase/app-compat": "^0.2.11",
     "@freakycoder/react-native-bounceable": ">= 0.2.2",
+<<<<<<< HEAD
     "@react-native-async-storage/async-storage": "^1.18.2",
+=======
+    "@react-native-async-storage/async-storage": "^1.17.11",
+>>>>>>> e1506e1 (pref)
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-firebase/app": "^17.5.0",
     "@react-native-firebase/auth": "^17.5.0",

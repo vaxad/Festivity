@@ -16,6 +16,7 @@ import { loadUser } from '../redux/action';
 import Review from './Screens/Review';
 import PersonalInformation from './Screens/PersonalInformation';
 import SearchBar from "react-native-dynamic-search-bar";
+import Splash from './Screens/Splash';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -128,6 +129,12 @@ const StackLayout=()=>{
                   gestureEnabled: true,
                   gestureDirection: "horizontal",
                   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                  headerShown: false
+                }}/>
+                <Stack.Screen
+              name="Splash"
+              component={Splash}
+              options={{
                   headerShown: false
                 }}/>
         </Stack.Navigator>

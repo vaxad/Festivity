@@ -17,6 +17,9 @@ const Tab = createBottomTabNavigator();
 const Nav = ()=>{
     const { user } = useSelector(state => state.auth)
     const navigation=useNavigation();
+    if(!user){
+        navigation.navigate('login2')
+    }
     
     return(
         <Tab.Navigator

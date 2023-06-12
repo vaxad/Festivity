@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { useContext } from "react";
 import { context } from "../app/index";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export const authReducer = createReducer(
@@ -32,9 +33,8 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload.data.user;
-      console.log(state.user);
-      state.token=action.payload.data.token;
-      console.log(state.token)
+      state.token = action.payload.data.token;
+      console.log(state.token);
       //a.setState('hii')
       state.message = action.payload.data.message;
 
@@ -147,6 +147,7 @@ export const authReducer = createReducer(
       state.loading = false;
       state.isAuthenticated = false;
       state.user = null;
+      state.token=null;
     },
     logoutFailure: (state, action) => {
       state.loading = false;
