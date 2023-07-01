@@ -49,16 +49,63 @@ const renderScene = SceneMap({
 });
 
 const ProfilePeople = () => {
+  
   const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadReviews("647b0e1216008065b5d9e37c",token));
+    dispatch(loadUser(token));
+  }, []);
+
+  var { user } = useSelector(state => state.auth);
+  if (!user) {
+    navigation.navigate('login2');
+  }
+  useEffect(() => {
+    dispatch(loadReviews(user._id,token));
   }, []);
   const { reviews } = useSelector(state => state.auth)
+  var revData=[
+    {
+      "_id": "649fb8acc25880dbdb5e9f34",
+      "about": "647b0e1216008065b5d9e37c",
+      "by": "647bb1c59eaf7d317c8fdb1b",
+      "stars": 3,
+      "description": "fkjnsdfikjsdifjvdkijsckvj sdfkj dkvjd",
+      "likes": 0,
+      "createdAt": "2023-07-01T05:25:00.379Z",
+      "__v": 0
+    },
+    {
+      "_id": "649fba258eaec7f123bb33be",
+      "about": "647b0e1216008065b5d9e37c",
+      "by": "647bb1c59eaf7d317c8fdb1b",
+      "stars": 7,
+      "description": "fkjnsdfikjsdifjvdkijsckvj sdfkj dkvjd",
+      "likes": 0,
+      "createdAt": "2023-07-01T05:31:17.963Z",
+      "__v": 0
+    },
+    {
+      "_id": "649fba3d8eaec7f123bb33c4",
+      "about": "647b0e1216008065b5d9e37c",
+      "by": "647bb1c59eaf7d317c8fdb1b",
+      "stars": 7,
+      "description": "good",
+      "likes": 0,
+      "createdAt": "2023-07-01T05:31:41.804Z",
+      "__v": 0
+    }
+  ]
+  if(reviews){
+    revData=reviews;
+  }
   const navigation = useNavigation();
   const layout = useWindowDimensions();
   const { allPosts } = useSelector(state => state.auth)
-  const DATA=allPosts?allPosts:null
+  const DATA=allPosts?allPosts.filter(function (el) {
+    return el.creator===user._id;
+}
+):null
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -111,17 +158,6 @@ const ProfilePeople = () => {
     }
   }
   
-  
-
-  
-  useEffect(() => {
-    dispatch(loadUser(token));
-  }, []);
-
-  var { user } = useSelector(state => state.auth);
-  if (!user) {
-    navigation.navigate('login2');
-  }
   const onViewCallBack = React.useCallback((viewableItems)=> {
     console.log(viewableItems)
     //imagepick();
@@ -204,7 +240,7 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
         contentContainerStyle={{flexGrow:1, justifyContent:'center' }}
         //refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         //onViewableItemsChanged={()=>imagepick()}
-        data={reviews}
+        data={revData}
         onViewableItemsChanged={onViewCallBack}
         viewabilityConfig={viewConfigRef.current}
         renderItem={({item}) =><ReviewCard review={item}/>}
