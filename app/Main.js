@@ -120,7 +120,8 @@ const StackLayout=()=>{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                headerShown: false
+                headerShown: true,
+                headerTitle:''
               }}/>
               <Stack.Screen
               name="Review"

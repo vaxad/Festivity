@@ -8,11 +8,7 @@
   "dependencies": {
     "@firebase/app-compat": "^0.2.11",
     "@freakycoder/react-native-bounceable": ">= 0.2.2",
-<<<<<<< HEAD
-    "@react-native-async-storage/async-storage": "^1.18.2",
-=======
     "@react-native-async-storage/async-storage": "^1.17.11",
->>>>>>> e1506e1 (pref)
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-firebase/app": "^17.5.0",
     "@react-native-firebase/auth": "^17.5.0",
@@ -41,6 +37,7 @@
     "react-native-dynamic-search-bar": "github:WrathChaos/react-native-dynamic-search-bar#expo",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-modal-datetime-picker": "^15.0.1",
+    "react-native-pager-view": "^6.1.2",
     "react-native-paper": "^5.8.0",
     "react-native-phone-number-input": "^2.1.0",
     "react-native-radio-buttons-group": "^3.0.2",

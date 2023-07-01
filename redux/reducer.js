@@ -109,6 +109,21 @@ export const authReducer = createReducer(
       state.error = action.payload.data;
     },
 
+    loadReviewsRequest: (state) => {
+      state.loading = true;
+    },
+    loadReviewsSuccess: (state, action) => {
+      ////('load')
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.reviews = action.payload.reviews;
+      ////(action.payload);
+    },
+    loadReviewsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.data;
+    },
+
     loadAllPostRequest: (state) => {
       state.loading = true;
     },

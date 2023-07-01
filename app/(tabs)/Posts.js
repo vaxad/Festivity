@@ -5,7 +5,7 @@ import { COLORS, FONT, SIZES } from '../../constants'
 import Post from '../../components/Post'
 import { useNavigation } from 'expo-router'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadAllPost, loadUser } from '../../redux/action'
+import { loadAllPost, loadReviews, loadUser } from '../../redux/action'
 import SearchBar from "react-native-dynamic-search-bar"
 import i1 from '../../assets/images/1.jpg'
 import i2 from '../../assets/images/2.jpg'
@@ -44,12 +44,15 @@ const Posts = () => {
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(loadUser(token));
+    dispatch(loadReviews("647b0e1216008065b5d9e37c",token));
     dispatch(loadAllPost(token));
   }, []);
   const { user } = useSelector(state => state.auth)
+  
   const { allPosts } = useSelector(state => state.auth)
   const DATA=allPosts?allPosts:null
   const [filteredData, setFilteredData] =useState(DATA);
+  
   
 
   const searchFilterFunction = (text) => {
@@ -123,7 +126,7 @@ const Posts = () => {
     }, 2000);
   }, []);
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
+    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite, alignItems:'center'}}>
       
       <View style={{marginTop:55}}/>
       <View style={{minHeight:50 }}>
@@ -137,9 +140,9 @@ const Posts = () => {
                   />
                   </View>
       
-      <View style={style.container}>
-        
+      <View style={style.container}> 
       <Text style={style.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
+    
       {/* <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text> */}
       <View style={{flexDirection:'row'}}>
@@ -172,9 +175,11 @@ const style=StyleSheet.create(
       marginHorizontal:SIZES.large,
       paddingHorizontal:SIZES.small,
       width: "100%",
+      alignItems:'center',
       
     },
     welcomeMessage: {
+      textAlign:'left',
       shadowColor:COLORS.gray,
       fontFamily: FONT.bold,
       fontSize: SIZES.xLarge,

@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux';
 import { useAnimatedGestureHandler } from 'react-native-reanimated';
 import SearchBar from "react-native-dynamic-search-bar";
 import ProfilePeople from '../Screens/ProfilePeople';
+import Review from '../Screens/Review';
+import ReviewCard from '../../components/ReviewCard';
 
 
 const Tab = createBottomTabNavigator();

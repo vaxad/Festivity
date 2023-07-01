@@ -62,7 +62,7 @@ const Post = ({ title, content, onPress }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.buttonContainer} onPress={() => onPress()}>
-        
+        <View style={{marginHorizontal:10}}>
         <ImageBackground
           source={imagepick()} // Replace with the path to your image
           style={styles.buttonImage}
@@ -74,6 +74,7 @@ const Post = ({ title, content, onPress }) => {
           <Text style={styles.buttonText}>{title}</Text>
           <Text style={styles.buttonsText} numberOfLines={3}>{content}</Text>
         </ImageBackground>
+        </View>
       </TouchableOpacity>
       {/* <Card>
         style={{
@@ -132,10 +133,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
 
     
-    right: 16,
-    top: 0,
-    paddingLeft: 10,
-    
     // width: 400,
     // height: 200,
 
@@ -146,14 +143,12 @@ const styles = StyleSheet.create({
 
   },
   buttonImage: {
-    
+    padding:15,
     // left:-18,
-    width: 328,
+    width:360,
     height: 206,
-    right: 16,
-    top: 0,
     paddingTop: 130,
-    paddingLeft: 10,
+    
   },
 
 

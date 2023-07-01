@@ -29,7 +29,7 @@ export const getUser = (userId,token) => async (dispatch) => {
     const res = await axios.get(`${serverUrl}/user/${userId}`,{
       headers:{
         'token':token
-      }
+      } 
     });
     //(res.data);
     dispatch({ type: "getUserSuccess", payload: res.data });
@@ -87,6 +87,24 @@ export const loadPost = (token) => async (dispatch) => {
     dispatch({ type: "loadPostSuccess", payload: res.data });
   } catch (error) {
     dispatch({ type: "loadPostFailure", payload: error.response.data.message });
+  }
+};
+
+export const loadReviews = (userId, token) => async (dispatch) => {
+  //('hiiload '+id);
+  try {
+    dispatch({ type: "loadReviewsRequest" });
+
+    const res = await axios.get(`${serverUrl}/review/${userId}`,{
+      headers:{
+        'token':token
+      }
+    });
+    //console.log(res.data.reviews);
+    
+    dispatch({ type: "loadReviewsSuccess", payload: res.data });
+  } catch (error) {
+    dispatch({ type: "loadReviewsFailure", payload: error.response.data.message });
   }
 };
 
