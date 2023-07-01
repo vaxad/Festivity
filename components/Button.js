@@ -15,7 +15,6 @@ const Button = ({title, onPress = () => {},disabled}) => {
       disabled={disabled}
       style={{
         height: 55,
-        width: 340,
         // top:48,
         
         justifyContent: 'center',

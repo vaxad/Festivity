@@ -56,7 +56,7 @@ const Nav = ()=>{
         >
             <Tab.Screen name="Posts" component={Posts} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
             <Tab.Screen name="Create" component={Create} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
-            <Tab.Screen name="Profile" component={ProfilePeople} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
+            <Tab.Screen name="Profile" component={Profile} options={{headerShown: false, tabBarLabelStyle:{display:"none"}}}/>
         </Tab.Navigator>
     )
 }

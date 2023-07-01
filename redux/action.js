@@ -23,6 +23,7 @@ export const login = (phone) => async (dispatch) => {
 
 export const getUser = (userId,token) => async (dispatch) => {
   ////('hii');
+  console.log("hellloooooooooooooooooooooo");
   try {
     dispatch({ type: "getUserRequest" });
 
@@ -31,7 +32,7 @@ export const getUser = (userId,token) => async (dispatch) => {
         'token':token
       } 
     });
-    //(res.data);
+    console.log(res.data);
     dispatch({ type: "getUserSuccess", payload: res.data });
   } catch (error) {
     dispatch({ type: "getUserFailure", payload: error.response.data.message });

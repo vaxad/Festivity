@@ -44,7 +44,6 @@ const Posts = () => {
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(loadUser(token));
-    dispatch(loadReviews("647b0e1216008065b5d9e37c",token));
     dispatch(loadAllPost(token));
   }, []);
   const { user } = useSelector(state => state.auth)
@@ -126,10 +125,9 @@ const Posts = () => {
     }, 2000);
   }, []);
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite, alignItems:'center'}}>
+    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite, alignItems:'center',marginTop:45}}>
       
-      <View style={{marginTop:55}}/>
-      <View style={{minHeight:50 }}>
+      <View style={{minHeight:50, marginVertical:10 }}>
       <SearchBar
                     placeholder="Search here"
                     style={{borderRadius:20}}           
@@ -140,7 +138,7 @@ const Posts = () => {
                   />
                   </View>
       
-      <View style={style.container}> 
+      <View style={{ marginHorizontal:20, alignItems:'center'}}> 
       <Text style={style.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
     
       {/* <Text style={styles.welcomeMessage}>Posts</Text>
@@ -179,13 +177,10 @@ const style=StyleSheet.create(
       
     },
     welcomeMessage: {
-      textAlign:'left',
       shadowColor:COLORS.gray,
       fontFamily: FONT.bold,
       fontSize: SIZES.xLarge,
       color: COLORS.primary,
-      marginBottom:2,
-      marginTop: 2,
     },
   }
 )

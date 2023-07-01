@@ -17,6 +17,7 @@ import Review from './Screens/Review';
 import PersonalInformation from './Screens/PersonalInformation';
 import SearchBar from "react-native-dynamic-search-bar";
 import Splash from './Screens/Splash';
+import ViewProfile from './Screens/ViewProfile';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -120,7 +121,17 @@ const StackLayout=()=>{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                headerShown: true,
+                headerShown: false,
+                headerTitle:''
+              }}/>
+              <Stack.Screen
+            name="viewProfile"
+            component={ViewProfile}
+            options={{
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: false,
                 headerTitle:''
               }}/>
               <Stack.Screen

@@ -78,16 +78,15 @@ const Create = () => {
     onRefresh();
   }
   return (
-    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
-    <View style={{marginTop:90}}/>
+    <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite, marginTop:45,}}>
     <ScrollView refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-      <View style={styles.container}>
+      <View style={{paddingVertical:10}}>
         
-      <Text style={styles.welcomeMessage}>Host a Party!</Text>
+      <Text style={[styles.welcomeMessage,{textAlign:'center'}]}>Host a Party!</Text>
     </View>
-    <View style={{padding: 10}}>
+    <View style={{marginHorizontal:10}}>
     <Input 
             keyboardType="default"
             onChangeText={setTitle}
@@ -132,6 +131,7 @@ const Create = () => {
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />
+      
     <Button title="Host" onPress={()=>{handleCreate()}}  />
 
     

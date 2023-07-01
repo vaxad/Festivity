@@ -4,7 +4,7 @@ import styles from '../../styles/common.style';
 import { COLORS, FONT, SIZES } from '../../constants';
 import Button from '../../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, loadUser, loadReviews } from '../../redux/action';
+import { logout, loadUser, loadReviews, getUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TabView, SceneMap } from 'react-native-tab-view';
@@ -48,64 +48,30 @@ const renderScene = SceneMap({
   second: SecondRoute,
 });
 
-const ProfilePeople = () => {
+const ProfilePeople = ({userShown}) => {
   
   const { token } = useSelector(state => state.auth);
   const dispatch = useDispatch();
+  // const { userFocus } = useSelector(state => state.auth);
+  // const user=userFocus;
+  // var { user } = useSelector(state => state.auth);
+  // if (!user) {
+  //   navigation.navigate('login2');
+  // }
   useEffect(() => {
-    dispatch(loadUser(token));
-  }, []);
-
-  var { user } = useSelector(state => state.auth);
-  if (!user) {
-    navigation.navigate('login2');
-  }
-  useEffect(() => {
-    dispatch(loadReviews(user._id,token));
+    dispatch(loadReviews(userShown._id,token));
   }, []);
   const { reviews } = useSelector(state => state.auth)
-  var revData=[
-    {
-      "_id": "649fb8acc25880dbdb5e9f34",
-      "about": "647b0e1216008065b5d9e37c",
-      "by": "647bb1c59eaf7d317c8fdb1b",
-      "stars": 3,
-      "description": "fkjnsdfikjsdifjvdkijsckvj sdfkj dkvjd",
-      "likes": 0,
-      "createdAt": "2023-07-01T05:25:00.379Z",
-      "__v": 0
-    },
-    {
-      "_id": "649fba258eaec7f123bb33be",
-      "about": "647b0e1216008065b5d9e37c",
-      "by": "647bb1c59eaf7d317c8fdb1b",
-      "stars": 7,
-      "description": "fkjnsdfikjsdifjvdkijsckvj sdfkj dkvjd",
-      "likes": 0,
-      "createdAt": "2023-07-01T05:31:17.963Z",
-      "__v": 0
-    },
-    {
-      "_id": "649fba3d8eaec7f123bb33c4",
-      "about": "647b0e1216008065b5d9e37c",
-      "by": "647bb1c59eaf7d317c8fdb1b",
-      "stars": 7,
-      "description": "good",
-      "likes": 0,
-      "createdAt": "2023-07-01T05:31:41.804Z",
-      "__v": 0
-    }
-  ]
-  if(reviews){
-    revData=reviews;
-  }
+  var revData=reviews?reviews:null;
+ 
   const navigation = useNavigation();
   const layout = useWindowDimensions();
   const { allPosts } = useSelector(state => state.auth)
   const DATA=allPosts?allPosts.filter(function (el) {
-    return el.creator===user._id;
+    return el.creator===userShown._id;
 }
 ):null
+
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -176,7 +142,7 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
             source={require('../../assets/images/kemal.jpg')}
             style={{ width: 200, height: 200, borderRadius: 400 / 2, alignSelf: 'center' }}
           />
-          <Text style={style.userName}>{user ? user.name : ''}</Text>
+          <Text style={style.userName}>{userShown ? userShown.name : ''}</Text>
 
           <View
             style={[
@@ -189,7 +155,7 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
               },
             ]}
           >
-            <Text>{user ? user.phone : ''}</Text>
+            <Text>{userShown ? userShown.phone : ''}</Text>
           </View>
 
           <View
