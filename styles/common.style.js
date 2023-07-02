@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     color: COLORS.secondary,
   },
   welcomeMessage: {
+    
     fontFamily: FONT.bold,
     fontSize: SIZES.xLarge,
     color: COLORS.primary,

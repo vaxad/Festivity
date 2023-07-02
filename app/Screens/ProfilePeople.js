@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, Image, useWindowDimensions, FlatList } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, Image, useWindowDimensions, FlatList, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import styles from '../../styles/common.style';
 import { COLORS, FONT, SIZES } from '../../constants';
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, loadUser, loadReviews, getUser } from '../../redux/action';
 import { useNavigation } from 'expo-router';
 import { ScrollView } from 'react-native-gesture-handler';
+import arrow from '../../assets/icons/arrow.png'
 import { TabView, SceneMap } from 'react-native-tab-view';
 import PagerView from 'react-native-pager-view';
 import Posts from '../(tabs)/Posts';
@@ -23,30 +24,7 @@ import i7 from '../../assets/images/7.jpg'
 import i8 from '../../assets/images/8.jpg'
 import ReviewCard from '../../components/ReviewCard';
 
-const FirstRoute = () => (
-<View style={{ flex: 1, backgroundColor: COLORS.dark }} >
-  {/* <FlatList
-        contentContainerStyle={{ paddingBottom: 20 }}
-        //refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        onViewableItemsChanged={()=>imagepick()}
-        data={DATA}
-        renderItem={({item}) => <Post title={item.title} content={item.description} creator={item.creator} onPress={()=>{navigation.navigate('postClick',{item:item})}}/>}
-        keyExtractor={item => item._id}
-      ></FlatList> */}
-      <Text style={{color:COLORS.dark}}> kshdsd,vjnd,jkdh</Text>
-</View>
-);
 
-const SecondRoute = () => ( 
-<View style={{ flex: 1, backgroundColor: '#FF00FF' }} >
-  <Text style={styles.userName}> kszkjckascbasuaisyuaisyuaikcubh</Text>
-</View>
-);
-
-const renderScene = SceneMap({
-  first: FirstRoute,
-  second: SecondRoute,
-});
 
 const ProfilePeople = ({userShown}) => {
   
@@ -130,14 +108,31 @@ const ProfilePeople = ({userShown}) => {
     // Use viewable items in state or as intended
 }, []) // any dependencies that require the function to be "redeclared"
 
+const logOut=()=>{
+      console.log('logout')
+      try {
+        AsyncStorage.setItem('token', null)
+     } catch (e) {
+       console.log(e);
+     }
+     dispatch(logout());
+     // BackHandler.exitApp();
+    }
 const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite, marginTop:45, alignItems:'center'  }}>
-      <View style={{ }} />
       
         <View style={[styles.container,{flex:1}]}>
-          <Text style={[styles.welcomeMessage,{marginLeft:10}]}>Profile</Text>
+        <View style={{flexDirection:'row',justifyContent:'space-between', marginHorizontal:10 }}>
+          <Text style={[styles.welcomeMessage,{}]}>Profile</Text>
+          <TouchableOpacity onPress={()=>{logOut()}}>
+          <View style={{backgroundColor:COLORS.dark, flex:1, flexDirection:'row', paddingHorizontal:10, borderRadius:SIZES.xLarge}}>
+          <Text style={[styles.welcomeMessage,{color:COLORS.lightWhite,fontFamily:FONT.medium, fontSize:SIZES.large, alignSelf:'center'}]}>Log out</Text>
+      {/* <Image style={{height:SIZES.large, width:SIZES.large, alignSelf:'center', marginHorizontal:2}} source={arrow}></Image> */}
+          </View>
+          </TouchableOpacity>
+      </View>
           <Image
             source={require('../../assets/images/kemal.jpg')}
             style={{ width: 200, height: 200, borderRadius: 400 / 2, alignSelf: 'center' }}
@@ -189,8 +184,6 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
             <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Attended Events</Text>
       <FlatList
         contentContainerStyle={{flexGrow:1, justifyContent:'center' }}
-        //refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        //onViewableItemsChanged={()=>imagepick()}
         data={DATA}
         onViewableItemsChanged={onViewCallBack}
         viewabilityConfig={viewConfigRef.current}
@@ -204,8 +197,6 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
       <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Reviews</Text>
       <FlatList
         contentContainerStyle={{flexGrow:1, justifyContent:'center' }}
-        //refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        //onViewableItemsChanged={()=>imagepick()}
         data={revData}
         onViewableItemsChanged={onViewCallBack}
         viewabilityConfig={viewConfigRef.current}
@@ -224,6 +215,32 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
 
 
 const style = StyleSheet.create({
+    overlay: {
+      ...StyleSheet.absoluteFillObject,
+      backgroundColor: 'rgba(0,0,0,0.1)'
+    },
+    container: {
+      flex: 1,
+      padding: 12,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    buttonText: {
+      marginTop:10,
+      marginVertical:5,
+      marginHorizontal:10,
+      textShadowOffset: {width:3,heigh:1},
+      textShadowColor:'black',
+      textShadowRadius:2,
+      marginBottom:10,
+      marginLeft:20,
+      fontFamily: FONT.medium,
+      fontSize: SIZES.xLarge,
+      color: COLORS.white,
+      marginTop: -6,
+  
+    },
+    
   label: {
     marginVertical: 5,
     fontSize: 14,

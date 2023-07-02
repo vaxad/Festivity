@@ -127,7 +127,7 @@ const Posts = () => {
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite, alignItems:'center',marginTop:45}}>
       
-      <View style={{minHeight:50, marginVertical:10 }}>
+      <View style={{minHeight:50,marginVertical:10 }}>
       <SearchBar
                     placeholder="Search here"
                     style={{borderRadius:20}}           
@@ -138,7 +138,7 @@ const Posts = () => {
                   />
                   </View>
       
-      <View style={{ marginHorizontal:20, alignItems:'center'}}> 
+      <View style={{ marginHorizontal:20, alignItems:'center', marginBottom:50}}> 
       <Text style={style.welcomeMessage}>Welcome {user?user.name:"user"}</Text>
     
       {/* <Text style={styles.welcomeMessage}>Posts</Text>

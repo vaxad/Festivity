@@ -18,6 +18,7 @@ import PersonalInformation from './Screens/PersonalInformation';
 import SearchBar from "react-native-dynamic-search-bar";
 import Splash from './Screens/Splash';
 import ViewProfile from './Screens/ViewProfile';
+import styles from '../styles/common.style';
 
 //const Stack = createStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -121,8 +122,18 @@ const StackLayout=()=>{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                headerShown: false,
-                headerTitle:''
+                headerShown: true,
+                headerTransparent:true,
+                headerTitle:'',
+                headerTitleAlign:'center',
+                headerTitleStyle:{
+                  textShadowOffset: {width:3,heigh:1},
+    textShadowColor:'black',
+    textShadowRadius:2,
+    fontFamily: FONT.medium,
+    fontSize: SIZES.xLarge,
+    color: COLORS.white,
+                }
               }}/>
               <Stack.Screen
             name="viewProfile"
@@ -131,8 +142,13 @@ const StackLayout=()=>{
                 gestureEnabled: true,
                 gestureDirection: "horizontal",
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                headerShown: false,
-                headerTitle:''
+                headerShown: true,
+                headerTitle:'Host Profile',
+                headerTitleAlign:'center',
+                headerTitleStyle:{fontFamily: FONT.bold,
+                  fontSize: SIZES.xLarge,
+                  color: COLORS.primary,
+                  marginTop: 2,}
               }}/>
               <Stack.Screen
               name="Review"

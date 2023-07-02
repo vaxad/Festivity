@@ -23,7 +23,7 @@ const Preference = ({title, onPress = () => {},disabled}) => {
         
         borderWidth:0.5,
     borderRadius:SIZES.large/0.1,
-        marginVertical: 20,
+        marginVertical: 10,
         justifyContent: 'center',
         alignItems: 'center',
       }}>

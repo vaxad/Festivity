@@ -16,9 +16,15 @@ import { getUser } from '../../redux/action'
 const PostClick = ({ route, navigation }) => {
   //const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
   const {item} = route.params;
+  navigation.setOptions({ headerTitle: item.title })
   const { token } = useSelector(state => state.auth)
   const dispatch=useDispatch()
   useEffect(() => {
+    // const unsubscribe = navigation.addListener('beforeRemove', e => {
+    //   e.preventDefault(); // Prevent default action
+    //   unsubscribe() // Unsubscribe the event on first call to prevent infinite loop
+    //   navigation.goBack() // Navigate to your desired screen
+    // });
     dispatch(getUser(item.creator,token));
   }, []);
   const { userFocus } = useSelector(state => state.auth)
@@ -29,7 +35,7 @@ const PostClick = ({ route, navigation }) => {
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
       <ImageBackground style={{flex:1}} blurRadius={10} source={require('../../assets/images/1.jpg')}>
       <View style={style.overlay} />
-      <ScrollView style={{marginHorizontal:15, marginTop:80}}>
+      <ScrollView style={{marginHorizontal:15, marginTop:100}}>
       <Image style={{padding:15,
     // left:-18,
     width:360,
@@ -50,7 +56,7 @@ const PostClick = ({ route, navigation }) => {
         <Image style={{height:24, width:24, alignSelf:'center'}} source={heart0}></Image>
       <Text style={[style.buttonText,{marginTop:10}]}>{item.likes}</Text>
       </View>
-      <TouchableOpacity onPress={()=>{navigation.navigate('viewProfile',{user:userFocus})}}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('viewProfile',{userShown:userFocus})}}>
       <View style={{flexDirection:'row', marginLeft:20 }}>
         <Image style={{height:24, width:24, alignSelf:'center'}} source={person}></Image>
       <Text style={[style.buttonText,{marginTop:10}]}>View Host's profile</Text>
