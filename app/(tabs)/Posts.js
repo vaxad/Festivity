@@ -31,16 +31,16 @@ const Posts = () => {
     try {
       AsyncStorage.setItem('token', action.payload.data.token)
    } catch (e) {
-     console.log(e);
+     //(e);
    }
   }else{
     try {
       AsyncStorage.getItem('token')
    } catch (e) {
-     console.log(e);
+    console.log(e);
    }
   }
-  console.log(token);
+  //(token);
   const dispatch=useDispatch()
   useEffect(() => {
     dispatch(loadUser(token));

@@ -23,7 +23,7 @@ export const login = (phone) => async (dispatch) => {
 
 export const getUser = (userId,token) => async (dispatch) => {
   ////('hii');
-  console.log("hellloooooooooooooooooooooo");
+  //("hellloooooooooooooooooooooo");
   try {
     dispatch({ type: "getUserRequest" });
 
@@ -32,7 +32,7 @@ export const getUser = (userId,token) => async (dispatch) => {
         'token':token
       } 
     });
-    console.log(res.data);
+    //(res.data);
     dispatch({ type: "getUserSuccess", payload: res.data });
   } catch (error) {
     dispatch({ type: "getUserFailure", payload: error.response.data.message });
@@ -101,7 +101,7 @@ export const loadReviews = (userId, token) => async (dispatch) => {
         'token':token
       }
     });
-    //console.log(res.data.reviews);
+    ////(res.data.reviews);
     
     dispatch({ type: "loadReviewsSuccess", payload: res.data });
   } catch (error) {
@@ -111,7 +111,7 @@ export const loadReviews = (userId, token) => async (dispatch) => {
 
 export const loadAllPost = (token) => async (dispatch) => {
   //('hiiload '+id);
-  console.log(token)
+  //(token)
   try {
     dispatch({ type: "loadAllPostRequest" });
 
@@ -147,10 +147,10 @@ export const deletePost = (id,token) => async (dispatch) => {
 };
 
 export const addPost = (formData,token) => async (dispatch) => {
-  console.log(formData)
+  //(formData)
   try {
     //dispatch({ type: "addPostRequest" });
-    console.log(formData)
+    //(formData)
     const res=await axios.post(
       `${serverUrl}/newpost`,formData,
       {
@@ -160,7 +160,7 @@ export const addPost = (formData,token) => async (dispatch) => {
         },
       }
     );
-    //console.log(res)
+    ////(res)
     dispatch({ type: "addPostSuccess", payload: res });
   } catch (error) {
     dispatch({ type: "addPostFailure", payload: error.response.res.message });
@@ -258,14 +258,14 @@ export const updatePost = (formData,token) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
-  console.log('logout')
+  //('logout')
   try {
     dispatch({ type: "logoutRequest" });
     //("logout")
     await axios.get(`${serverUrl}/logout`);
     dispatch({ type: "logoutSuccess" });
     loadUser();
-    console.log('logout')
+    //('logout')
   } catch (error) {
     dispatch({
       type: "logoutFailure",
@@ -282,10 +282,10 @@ export const register = (formData) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     });
-    console.log('reg')
+    //('reg')
     dispatch({ type: "registerSuccess", payload: res });
   } catch (error) {
-    console.log(error)
+    //(error)
     dispatch({
       type: "registerFailure",
       payload: error.response.data.message,

@@ -34,7 +34,7 @@ export const authReducer = createReducer(
       state.isAuthenticated = true;
       state.user = action.payload.data.user;
       state.token = action.payload.data.token;
-      console.log(state.token);
+      //(state.token);
       //a.setState('hii')
       state.message = action.payload.data.message;
 
@@ -207,7 +207,7 @@ export const authReducer = createReducer(
       state.loading = true;
     },
     addPostSuccess: (state, action) => {
-      console.log("add")
+      //("add")
       state.loading = false;
       state.message = action.payload.data.message;
 

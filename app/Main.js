@@ -85,7 +85,9 @@ const StackLayout=()=>{
                     placeholder="Search here"
                     style={{borderRadius:20}}
                     onPress={() => {}}
-                    onChangeText={(text) => console.log(text)}
+                    onChangeText={
+                      (text) => {}//(text)
+                    }
                   />,
           headerTransparent:false,
           headerTitleAlign: 'center',

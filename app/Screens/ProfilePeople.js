@@ -103,17 +103,17 @@ const ProfilePeople = ({userShown}) => {
   }
   
   const onViewCallBack = React.useCallback((viewableItems)=> {
-    console.log(viewableItems)
+    //(viewableItems)
     //imagepick();
     // Use viewable items in state or as intended
 }, []) // any dependencies that require the function to be "redeclared"
 
 const logOut=()=>{
-      console.log('logout')
+      //('logout')
       try {
         AsyncStorage.setItem('token', null)
      } catch (e) {
-       console.log(e);
+      console.log(e);
      }
      dispatch(logout());
      // BackHandler.exitApp();

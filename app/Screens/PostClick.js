@@ -28,9 +28,9 @@ const PostClick = ({ route, navigation }) => {
     dispatch(getUser(item.creator,token));
   }, []);
   const { userFocus } = useSelector(state => state.auth)
-  console.log(userFocus);
+  //(userFocus);
   var edate=new Date(item.date);
-  //console.log(date.toDateString());
+  ////(date.toDateString());
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
       <ImageBackground style={{flex:1}} blurRadius={10} source={require('../../assets/images/1.jpg')}>
@@ -42,8 +42,8 @@ const PostClick = ({ route, navigation }) => {
     height: 206, alignSelf:'center', borderRadius:SIZES.large}}
       source={require('../../assets/images/1.jpg')}
       />
-      <Text style={[style.buttonText,{marginTop:20, textAlign:'center',fontFamily: FONT.bold}]}>{item.title}</Text>
-      <Text style={[style.buttonText,{fontSize: SIZES.medium,marginTop:10, fontFamily: FONT.medium,}]}>{item.description}</Text>
+      {/* <Text style={[style.buttonText,{marginTop:20, textAlign:'center',fontFamily: FONT.bold}]}>{item.title}</Text> */}
+      <Text style={[style.buttonText,{fontSize: SIZES.medium,marginTop:10, fontFamily: FONT.medium,marginTop:20}]}>{item.description}</Text>
       <View style={{flexDirection:'row', marginLeft:20 }}>
         <Image style={{height:24, width:24, alignSelf:'center'}} source={location}></Image>
       <Text style={[style.buttonText,{marginTop:10}]}>{item.venue}</Text>

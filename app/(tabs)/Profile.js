@@ -7,14 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Profile = () => {
   const { token } = useSelector(state => state.auth)
-  console.log(token)
+  //(token)
     const navigation=useNavigation()
     const dispatch=useDispatch();
   useEffect(() => {
         dispatch(loadUser(token));
       }, []);
       const { user } = useSelector(state => state.auth)
-      console.log(user);
+      //(user);
     if(user){  
   return (
     
@@ -43,11 +43,11 @@ export default Profile
 //   const navigation=useNavigation()
 //   const dispatch=useDispatch();
 //   const logOut=()=>{
-//     console.log('logout')
+//     //('logout')
 //     try {
 //       AsyncStorage.setItem('token', null)
 //    } catch (e) {
-//      console.log(e);
+//      //(e);
 //    }
 //    dispatch(logout());
 //    // BackHandler.exitApp();

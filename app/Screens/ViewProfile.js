@@ -101,7 +101,7 @@ const ViewProfile = ({route}) => {
     }
     
     const onViewCallBack = React.useCallback((viewableItems)=> {
-      console.log(viewableItems)
+      //(viewableItems)
       //imagepick();
       // Use viewable items in state or as intended
   }, []) // any dependencies that require the function to be "redeclared"
