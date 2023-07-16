@@ -48,7 +48,7 @@ const Create = () => {
   };
 
   const handleConfirm = (date) => {
-    //console.warn("A date has been picked: ", date);
+    ////.warn("A date has been picked: ", date);
 
     edate=date;
     hideDatePicker();
@@ -61,7 +61,7 @@ const Create = () => {
   }, []);
   const { user } = useSelector(state => state.auth)
   const handleCreate=()=>{
-    console.log(edate)
+    //.log(edate)
    const  formdata={
       "title":title,
       "description":desc,

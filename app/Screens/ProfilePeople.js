@@ -23,6 +23,7 @@ import i6 from '../../assets/images/6.jpg'
 import i7 from '../../assets/images/7.jpg'
 import i8 from '../../assets/images/8.jpg'
 import ReviewCard from '../../components/ReviewCard';
+import Preference from '../../components/Preference';
 
 
 
@@ -38,10 +39,20 @@ const ProfilePeople = ({userShown}) => {
   // }
   useEffect(() => {
     dispatch(loadReviews(userShown._id,token));
+    
   }, []);
   const { reviews } = useSelector(state => state.auth)
   var revData=reviews?reviews:null;
+
+  useEffect(() => {
+    if(reviews){
+      if(reviews[0].about!==userShown._id){
+        dispatch(loadReviews(userShown._id,token));
+      }
+    }
+  }, []);
  
+  const pageref = React.useRef(PagerView);
   const navigation = useNavigation();
   const layout = useWindowDimensions();
   const { allPosts } = useSelector(state => state.auth)
@@ -50,7 +61,7 @@ const ProfilePeople = ({userShown}) => {
 }
 ):null
 
-
+  const [page, setPage] = React.useState(0);
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'First' },
@@ -113,7 +124,7 @@ const logOut=()=>{
       try {
         AsyncStorage.setItem('token', null)
      } catch (e) {
-      console.log(e);
+      //.log(e);
      }
      dispatch(logout());
      // BackHandler.exitApp();
@@ -177,11 +188,14 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
         
       
       <SafeAreaView style={{flex:1, marginTop:20}}>
-      
-          <PagerView style={style.pagerView} initialPage={0}>
+        <View style={{flexDirection:'row', justifyContent:'center', marginVertical:10}}>
+          <Preference title="Attended Events" selected={page==0?"Attended Events":false} onPress={()=>{pageref.current.setPage(0);}}></Preference>
+          <Preference title="Reviews" selected={page==1?"Reviews":false} onPress={()=>{pageref.current.setPage(1);}}></Preference>
+          </View>
+          <PagerView style={style.pagerView} initialPage={page} onPageSelected={e=>{setPage(e.nativeEvent.position)}} ref={pageref}>
       <View key="1">
           <SafeAreaView style={{flex:1, padding:20,justifyContent:'center',flexDirection:'column', alignSelf:'center', alignContent:'center'}}>
-            <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Attended Events</Text>
+            {/* <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Attended Events</Text> */}
       <FlatList
         contentContainerStyle={{flexGrow:1, justifyContent:'center' }}
         data={DATA}
@@ -193,8 +207,8 @@ const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 })
       </SafeAreaView>
       </View>
       <View key="2">
-      <SafeAreaView style={{flex:1, padding:20,justifyContent:'center',flexDirection:'column', alignSelf:'center', alignContent:'center'}}>
-      <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Reviews</Text>
+      <SafeAreaView style={{flex:1, padding:10,justifyContent:'center',flexDirection:'column', alignSelf:'center', alignContent:'center'}}>
+      {/* <Text style={[styles.welcomeMessage,{marginVertical:10, textAlign:'center'}]}>Reviews</Text> */}
       <FlatList
         contentContainerStyle={{flexGrow:1, justifyContent:'center' }}
         data={revData}

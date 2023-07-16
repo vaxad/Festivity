@@ -154,12 +154,23 @@ const StackLayout=()=>{
               }}/>
               <Stack.Screen
               name="Review"
-              component={PersonalInformation}
+              component={Review}
               options={{
-                  gestureEnabled: true,
-                  gestureDirection: "horizontal",
-                  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-                  headerShown: false
+                gestureEnabled: true,
+                gestureDirection: "horizontal",
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+                headerShown: true,
+                headerTransparent:true,
+                headerTitle:'',
+                headerTitleAlign:'center',
+                headerTitleStyle:{
+                  textShadowOffset: {width:3,heigh:1},
+    textShadowColor:'black',
+    textShadowRadius:2,
+    fontFamily: FONT.medium,
+    fontSize: SIZES.xLarge,
+    color: COLORS.white,
+                }
                 }}/>
                 <Stack.Screen
               name="Splash"

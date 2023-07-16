@@ -113,9 +113,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.vaxad.moment0'
+    namespace 'com.vaxad.festivity'
     defaultConfig {
-        applicationId 'com.vaxad.moment0'
+        applicationId 'com.vaxad.festivity'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

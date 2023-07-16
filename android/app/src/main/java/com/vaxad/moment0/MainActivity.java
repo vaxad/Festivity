@@ -1,4 +1,4 @@
-package com.vaxad.moment0;
+package com.vaxad.festivity;
 
 import android.os.Build;
 import android.os.Bundle;

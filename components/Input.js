@@ -7,11 +7,14 @@ const Input = ({
   iconName,
   error,
   password,
+  multi,
+  numLines,
   onFocus = () => {},
   ...props
 }) => {
   const [hidePassword, setHidePassword] = React.useState(password);
   const [isFocused, setIsFocused] = React.useState(false);
+  const height=numLines?numLines*20:20;
   return (
     <View style={{marginBottom: 20}}>
       <Text style={style.label}>{label}</Text>
@@ -24,7 +27,6 @@ const Input = ({
               : isFocused
               ? COLORS.black
               : COLORS.black,
-            alignItems: 'center',
           },
         ]}>
         <Icon
@@ -32,6 +34,8 @@ const Input = ({
           style={{color: COLORS.primary, fontSize: 22, marginRight: 10}}
         />
         <TextInput
+          multiline={multi}
+          numberOfLines={numLines}
           autoCorrect={false}
           onFocus={() => {
             onFocus();
@@ -67,7 +71,8 @@ const style = StyleSheet.create({
     left:13,
   },
   inputContainer: {
-    height: 55,
+    alignItems:'center',
+    minHeight:55,
     backgroundColor: COLORS.light,
     borderRadius:SIZES.large/0.5,
     flexDirection: 'row',

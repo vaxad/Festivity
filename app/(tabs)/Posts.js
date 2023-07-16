@@ -37,7 +37,7 @@ const Posts = () => {
     try {
       AsyncStorage.getItem('token')
    } catch (e) {
-    console.log(e);
+    //.log(e);
    }
   }
   //(token);
@@ -49,16 +49,17 @@ const Posts = () => {
   const { user } = useSelector(state => state.auth)
   
   const { allPosts } = useSelector(state => state.auth)
-  const DATA=allPosts?allPosts:null
+  const DATA=allPosts?allPosts.filter(function (el){
+    return new Date(el.date)>new Date(Date.now())
+  }) :null
   const [filteredData, setFilteredData] =useState(DATA);
-  
   
 
   const searchFilterFunction = (text) => {
     etext=text;
-    if(text){  
+    if(text&&allPosts){  
         const newData = allPosts.filter(item => {
-            const itemData = item.description||item.title ? item.description.concat(item.title,item.venue).toUpperCase() : ''.toUpperCase();
+            const itemData = item.description&&item.title ? item.description.concat(item.title,item.venue).toUpperCase() : ''.toUpperCase();
             const textData = text.toUpperCase();
             return itemData.indexOf(textData) > -1;
         })
@@ -67,6 +68,14 @@ const Posts = () => {
         setFilteredData(DATA);
     }
 }
+
+  const [selected, setSelected]=useState('Any');
+  const preferenceSelected=(opt)=>{
+    setSelected(opt);
+    opt=opt==="Any"?"":opt;
+    searchFilterFunction(opt);
+  }
+
 
   const navigation=useNavigation();
 
@@ -133,7 +142,7 @@ const Posts = () => {
                     style={{borderRadius:20}}           
                     darkMode={true}
                     onPress={() => {}}
-                    onClearPress={()=>{setFilteredData(DATA); ke}}
+                    onClearPress={()=>{setFilteredData(DATA);}}
                     onChangeText={(text) => text?searchFilterFunction(text):setFilteredData(DATA)}
                   />
                   </View>
@@ -144,9 +153,9 @@ const Posts = () => {
       {/* <Text style={styles.welcomeMessage}>Posts</Text>
       <Text style={styles.userName}>here</Text> */}
       <View style={{flexDirection:'row'}}>
-      <Preference title="Dadar" onPress={()=>{searchFilterFunction("Dadar")}}></Preference>
-      <Preference title="Borivali" onPress={()=>{searchFilterFunction("Borivali")}}></Preference>
-      <Preference title="Any" onPress={()=>{searchFilterFunction("")}}></Preference>
+      <Preference title="Dadar" onPress={()=>{preferenceSelected("Dadar")}} selected={selected}></Preference>
+      <Preference title="Borivali" onPress={()=>{preferenceSelected("Borivali")}} selected={selected}></Preference>
+      <Preference title="Any" onPress={()=>{preferenceSelected("Any")}} selected={selected}></Preference >
       </View>
       <View style={{flex:1}}>
         

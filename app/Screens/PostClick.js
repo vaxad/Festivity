@@ -30,6 +30,7 @@ const PostClick = ({ route, navigation }) => {
   const { userFocus } = useSelector(state => state.auth)
   //(userFocus);
   var edate=new Date(item.date);
+  ////.log(new Date(item.date)<new Date(Date.now()));
   ////(date.toDateString());
   return (
     <SafeAreaView style={{flex:1, backgroundColor:COLORS.lightWhite}}>
@@ -63,9 +64,9 @@ const PostClick = ({ route, navigation }) => {
       <Image style={{height:24, width:24, alignSelf:'center'}} source={arrow}></Image>
       </View>
       </TouchableOpacity>
-        
 
       <Button title="Request to join"/>
+      <Button title="Write a Review" onPress={()=>{navigation.navigate('Review',{item:item})}}/>
       </ScrollView>
       </ImageBackground>
     </SafeAreaView>

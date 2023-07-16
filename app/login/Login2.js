@@ -1,4 +1,4 @@
-import { View, SafeAreaView, ScrollView, Text, BackHandler } from "react-native";
+import { View, SafeAreaView, ScrollView, Text, BackHandler, ActivityIndicator } from "react-native";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import Loader from "../../components/Loader";
@@ -20,7 +20,7 @@ const Login2 = () => {
   const [name,setName]=useState('')
   const [phoneNumber,setPhoneNumber]=useState('')
   const [code,setCode]=useState('')
-  const [loading,setLoading]=useState(false);
+  const [loading,setLoading]=useState(token?true:false);
   const [verificationdId, setVerificationId] = useState(null);
   const [disabled,setDisabled]=useState(false)
   const navigation=useNavigation();
@@ -45,25 +45,26 @@ const Login2 = () => {
   //   navigation.navigate('tabs')
   //   }
   const handleSubmit=()=>{
-    console.log('reg')
+    //.log('reg')
     const formdata={
       "name":name,
       "phone":phoneNumber
     }
-    console.log(formdata)
+    //.log(formdata)
     try {
       
       dispatch(register(formdata,token))
       // navigation.replace('tabs',{screen:'Posts'})
       navigation.replace('Splash')
     } catch (e) {
-      console.log(e)
+      //.log(e)
     }
     
     setPhoneNumber('');
     setCode('');
     setDisabled(false);
-    setName('');;
+    setName('');
+    setLoading(true);
   }
 
 
@@ -108,8 +109,13 @@ const Login2 = () => {
 
   const handleError = (error, input) => {
     setErrors(prevState => ({ ...prevState, [input]: error }));
-  };
-  return (
+  }; 
+  return loading? (
+    <View style={{flex: 1,
+      justifyContent: 'center',}}>
+    <ActivityIndicator size="large"/>
+    </View>
+  ):(
     <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
       <Loader visible={loading} />
       <ScrollView
